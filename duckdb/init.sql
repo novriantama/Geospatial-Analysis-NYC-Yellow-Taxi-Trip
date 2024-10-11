@@ -1,2 +1,0 @@
-INSTALL httpfs;
-LOAD httpfs;

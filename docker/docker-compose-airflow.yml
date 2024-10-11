@@ -1,18 +1,5 @@
 version: '3.7'
 services:
-  duckdb:
-    image: yellow-cab/duckdb
-    container_name: ${DUCK_DB_CONTAINER_NAME}
-    hostname: ${DUCK_DB_CONTAINER_NAME}
-    volumes:
-      - ../duckdb-data:/duckdb/data
-    ports:
-      - "1234:1234"
-    environment:
-      - GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_SERVICE_ACCOUNT} 
-    tty: true 
-    stdin_open: true 
-
   postgres:
     image: postgres:11
     container_name: ${POSTGRES_CONTAINER_NAME}
@@ -25,8 +12,6 @@ services:
       - PGDATA=/var/lib/postgresql/data/pgdata
     ports:
       - ${POSTGRES_PORT}:5432
-    depends_on:
-      - duckdb
 
   scheduler:
     image: yellow-cab/airflow
@@ -37,16 +22,21 @@ services:
     environment:
       - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_CONTAINER_NAME}/${POSTGRES_DB}
       - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__CORE__TEST_CONNECTION=Enabled
       - GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_SERVICE_ACCOUNT} 
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_CONTAINER_NAME=${POSTGRES_CONTAINER_NAME}
       - POSTGRES_PORT=${POSTGRES_PORT}
+      - PROJECT_ID=${PROJECT_ID}
+      - DATASET_ID=${DATASET_ID}
     volumes:
       - ../dags:/opt/airflow/dags
       - ../logs:/opt/airflow/logs
       - ../scripts:/scripts
+      - ../spark-scripts:/spark-scripts
+      - ../data:/data
     depends_on:
       - postgres
 
@@ -54,23 +44,28 @@ services:
     image: yellow-cab/airflow
     container_name: ${AIRFLOW_WEBSERVER_CONTAINER_NAME}
     hostname: ${AIRFLOW_WEBSERVER_CONTAINER_NAME}
-    entrypoint: /scripts/entrypoint-airflow.sh
+    entrypoint: /scripts/entrypoint.sh
     restart: always
     depends_on:
       - scheduler
     environment:
       - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_CONTAINER_NAME}/${POSTGRES_DB}
       - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__CORE__TEST_CONNECTION=Enabled
       - GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_SERVICE_ACCOUNT} 
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_CONTAINER_NAME=${POSTGRES_CONTAINER_NAME}
       - POSTGRES_PORT=${POSTGRES_PORT}
+      - PROJECT_ID=${PROJECT_ID}
+      - DATASET_ID=${DATASET_ID}
     volumes:
       - ../dags:/opt/airflow/dags
       - ../logs:/opt/airflow/logs
       - ../scripts:/scripts
+      - ../spark-scripts:/spark-scripts
+      - ../data:/data
     ports:
       - ${AIRFLOW_WEBSERVER_PORT}:8080
 
