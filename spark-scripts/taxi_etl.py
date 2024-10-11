@@ -81,11 +81,11 @@ def main():
         "Trip_Distance_Calculated",
         expr(f"ST_Distance(Pickup_Point, Dropoff_Point)")
     ).withColumn(
-        "Pickup_Point_WKB", 
-        expr(f"ST_AsBinary(Pickup_Point)").cast(BinaryType())  
+        "Pickup_Point_EWKT", 
+        expr(f"ST_AsText(Pickup_Point)").cast(StringType())  
     ).withColumn(
-        "Dropoff_Point_WKB", 
-        expr(f"ST_AsBinary(Dropoff_Point)").cast(BinaryType())  
+        "Dropoff_Point_EWKT", 
+        expr(f"ST_AsText(Dropoff_Point)").cast(StringType())  
     ).select(
         "VendorID",
         "payment_type",
@@ -106,8 +106,8 @@ def main():
         "total_amount",
         "Trip_Duration",
         "store_and_fwd_flag",
-        "Pickup_Point_WKB",
-        "Dropoff_Point_WKB",
+        "Pickup_Point_EWKT",
+        "Dropoff_Point_EWKT",
         "Trip_Distance_Calculated"
     )
 
