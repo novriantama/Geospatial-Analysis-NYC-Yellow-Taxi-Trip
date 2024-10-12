@@ -34,12 +34,35 @@ def main():
         create_disposition="CREATE_IF_NEEDED",
     )
 
+    # Define Schema
+    schema = StructType([
+        StructField("VendorID", IntegerType(), True),
+        StructField("tpep_pickup_datetime", TimestampType(), True),
+        StructField("tpep_dropoff_datetime", TimestampType(), True),
+        StructField("passenger_count", IntegerType(), True),
+        StructField("trip_distance", DoubleType(), True),
+        StructField("pickup_longitude", DoubleType(), True),
+        StructField("pickup_latitude", DoubleType(), True),
+        StructField("RatecodeID", IntegerType(), True),
+        StructField("store_and_fwd_flag", StringType(), True),
+        StructField("dropoff_longitude", DoubleType(), True), 
+        StructField("dropoff_latitude", DoubleType(), True),
+        StructField("payment_type", IntegerType(), True),
+        StructField("fare_amount", DoubleType(), True),
+        StructField("extra", DoubleType(), True),
+        StructField("mta_tax", DoubleType(), True),
+        StructField("tip_amount", DoubleType(), True),
+        StructField("tolls_amount", DoubleType(), True),
+        StructField("improvement_surcharge", DoubleType(), True),
+        StructField("total_amount", DoubleType(), True)
+    ])
+
     # Read the CSV data
     df = spark.read.csv(
         "/data/yellow_tripdata_2016-01.csv",
         header=True,
-        inferSchema=True
-    )
+        schema=schema
+    )  
 
     # --- Data Cleaning ---
     # Remove rows with missing values in key columns
