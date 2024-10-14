@@ -1,0 +1,580 @@
+[2024-10-11T12:27:50.510+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-10-11T12:27:50.549+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_yellow_cab.etl_task manual__2024-10-11T07:14:16.194830+00:00 [queued]>
+[2024-10-11T12:27:50.555+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_yellow_cab.etl_task manual__2024-10-11T07:14:16.194830+00:00 [queued]>
+[2024-10-11T12:27:50.555+0000] {taskinstance.py:2306} INFO - Starting attempt 16 of 16
+[2024-10-11T12:27:50.565+0000] {taskinstance.py:2330} INFO - Executing <Task(SparkSubmitOperator): etl_task> on 2024-10-11 07:14:16.194830+00:00
+[2024-10-11T12:27:50.570+0000] {standard_task_runner.py:63} INFO - Started process 1156 to run task
+[2024-10-11T12:27:50.575+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'etl_yellow_cab', 'etl_task', 'manual__2024-10-11T07:14:16.194830+00:00', '--job-id', '34', '--raw', '--subdir', 'DAGS_FOLDER/yellow-cab-batch.py', '--cfg-path', '/tmp/tmpehyyyfu0']
+[2024-10-11T12:27:50.579+0000] {standard_task_runner.py:91} INFO - Job 34: Subtask etl_task
+[2024-10-11T12:27:50.599+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.9/site-packages/airflow/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2024-10-11T12:27:50.636+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_yellow_cab.etl_task manual__2024-10-11T07:14:16.194830+00:00 [running]> on host yellow-cab-airflow-scheduler
+[2024-10-11T12:27:50.699+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='hafidz' AIRFLOW_CTX_DAG_ID='etl_yellow_cab' AIRFLOW_CTX_TASK_ID='etl_task' AIRFLOW_CTX_EXECUTION_DATE='2024-10-11T07:14:16.194830+00:00' AIRFLOW_CTX_TRY_NUMBER='16' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-10-11T07:14:16.194830+00:00'
+[2024-10-11T12:27:50.700+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-10-11T12:27:50.720+0000] {base.py:84} INFO - Using connection ID 'spark_main' for task execution.
+[2024-10-11T12:27:50.721+0000] {spark_submit.py:473} INFO - Spark-Submit cmd: spark-submit --master spark://spark-master:7077 --conf spark.jars.packages=org.apache.sedona:sedona-python-adapter-3.0_2.12:1.2.0-incubating,org.datasyslab:geotools-wrapper:geotools-24.0 --conf spark.jars.repositories=https://repo1.maven.org/maven2/ --name arrow-spark --deploy-mode client /spark-scripts/taxi_etl.py
+[2024-10-11T12:27:51.733+0000] {spark_submit.py:649} INFO - https://repo1.maven.org/maven2/ added as a remote repository with the name: repo-1
+[2024-10-11T12:27:51.750+0000] {spark_submit.py:649} INFO - :: loading settings :: url = jar:file:/home/airflow/.local/lib/python3.9/site-packages/pyspark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
+[2024-10-11T12:27:51.803+0000] {spark_submit.py:649} INFO - Ivy Default Cache set to: /home/airflow/.ivy2/cache
+[2024-10-11T12:27:51.803+0000] {spark_submit.py:649} INFO - The jars for the packages stored in: /home/airflow/.ivy2/jars
+[2024-10-11T12:27:51.805+0000] {spark_submit.py:649} INFO - org.apache.sedona#sedona-python-adapter-3.0_2.12 added as a dependency
+[2024-10-11T12:27:51.806+0000] {spark_submit.py:649} INFO - org.datasyslab#geotools-wrapper added as a dependency
+[2024-10-11T12:27:51.806+0000] {spark_submit.py:649} INFO - :: resolving dependencies :: org.apache.spark#spark-submit-parent-58404417-b115-4341-b5f4-961b032b59fa;1.0
+[2024-10-11T12:27:51.806+0000] {spark_submit.py:649} INFO - confs: [default]
+[2024-10-11T12:27:51.878+0000] {spark_submit.py:649} INFO - found org.apache.sedona#sedona-python-adapter-3.0_2.12;1.2.0-incubating in central
+[2024-10-11T12:27:51.899+0000] {spark_submit.py:649} INFO - found org.locationtech.jts#jts-core;1.18.0 in central
+[2024-10-11T12:27:51.914+0000] {spark_submit.py:649} INFO - found org.wololo#jts2geojson;0.16.1 in central
+[2024-10-11T12:27:51.930+0000] {spark_submit.py:649} INFO - found org.apache.sedona#sedona-core-3.0_2.12;1.2.0-incubating in central
+[2024-10-11T12:27:51.943+0000] {spark_submit.py:649} INFO - found org.scala-lang.modules#scala-collection-compat_2.12;2.5.0 in central
+[2024-10-11T12:27:51.957+0000] {spark_submit.py:649} INFO - found org.apache.sedona#sedona-sql-3.0_2.12;1.2.0-incubating in central
+[2024-10-11T12:27:51.971+0000] {spark_submit.py:649} INFO - found org.datasyslab#geotools-wrapper;geotools-24.0 in central
+[2024-10-11T12:27:51.989+0000] {spark_submit.py:649} INFO - :: resolution report :: resolve 176ms :: artifacts dl 7ms
+[2024-10-11T12:27:51.989+0000] {spark_submit.py:649} INFO - :: modules in use:
+[2024-10-11T12:27:51.989+0000] {spark_submit.py:649} INFO - org.apache.sedona#sedona-core-3.0_2.12;1.2.0-incubating from central in [default]
+[2024-10-11T12:27:51.990+0000] {spark_submit.py:649} INFO - org.apache.sedona#sedona-python-adapter-3.0_2.12;1.2.0-incubating from central in [default]
+[2024-10-11T12:27:51.990+0000] {spark_submit.py:649} INFO - org.apache.sedona#sedona-sql-3.0_2.12;1.2.0-incubating from central in [default]
+[2024-10-11T12:27:51.990+0000] {spark_submit.py:649} INFO - org.datasyslab#geotools-wrapper;geotools-24.0 from central in [default]
+[2024-10-11T12:27:51.990+0000] {spark_submit.py:649} INFO - org.locationtech.jts#jts-core;1.18.0 from central in [default]
+[2024-10-11T12:27:51.990+0000] {spark_submit.py:649} INFO - org.scala-lang.modules#scala-collection-compat_2.12;2.5.0 from central in [default]
+[2024-10-11T12:27:51.990+0000] {spark_submit.py:649} INFO - org.wololo#jts2geojson;0.16.1 from central in [default]
+[2024-10-11T12:27:51.991+0000] {spark_submit.py:649} INFO - ---------------------------------------------------------------------
+[2024-10-11T12:27:51.991+0000] {spark_submit.py:649} INFO - |                  |            modules            ||   artifacts   |
+[2024-10-11T12:27:51.991+0000] {spark_submit.py:649} INFO - |       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+[2024-10-11T12:27:51.991+0000] {spark_submit.py:649} INFO - ---------------------------------------------------------------------
+[2024-10-11T12:27:51.991+0000] {spark_submit.py:649} INFO - |      default     |   7   |   0   |   0   |   0   ||   7   |   0   |
+[2024-10-11T12:27:51.991+0000] {spark_submit.py:649} INFO - ---------------------------------------------------------------------
+[2024-10-11T12:27:51.993+0000] {spark_submit.py:649} INFO - :: retrieving :: org.apache.spark#spark-submit-parent-58404417-b115-4341-b5f4-961b032b59fa
+[2024-10-11T12:27:51.993+0000] {spark_submit.py:649} INFO - confs: [default]
+[2024-10-11T12:27:52.001+0000] {spark_submit.py:649} INFO - 0 artifacts copied, 7 already retrieved (0kB/8ms)
+[2024-10-11T12:27:52.115+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:52 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2024-10-11T12:27:53.841+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:53 INFO SparkContext: Running Spark version 3.3.2
+[2024-10-11T12:27:53.859+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:53 INFO ResourceUtils: ==============================================================
+[2024-10-11T12:27:53.860+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:53 INFO ResourceUtils: No custom resources configured for spark.driver.
+[2024-10-11T12:27:53.860+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:53 INFO ResourceUtils: ==============================================================
+[2024-10-11T12:27:53.860+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:53 INFO SparkContext: Submitted application: BigQueryETL
+[2024-10-11T12:27:53.874+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:53 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+[2024-10-11T12:27:53.880+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:53 INFO ResourceProfile: Limiting resource is cpu
+[2024-10-11T12:27:53.880+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:53 INFO ResourceProfileManager: Added ResourceProfile id: 0
+[2024-10-11T12:27:53.916+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:53 INFO SecurityManager: Changing view acls to: airflow
+[2024-10-11T12:27:53.917+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:53 INFO SecurityManager: Changing modify acls to: airflow
+[2024-10-11T12:27:53.917+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:53 INFO SecurityManager: Changing view acls groups to:
+[2024-10-11T12:27:53.918+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:53 INFO SecurityManager: Changing modify acls groups to:
+[2024-10-11T12:27:53.918+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:53 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(airflow); groups with view permissions: Set(); users  with modify permissions: Set(airflow); groups with modify permissions: Set()
+[2024-10-11T12:27:54.099+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO Utils: Successfully started service 'sparkDriver' on port 37753.
+[2024-10-11T12:27:54.119+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO SparkEnv: Registering MapOutputTracker
+[2024-10-11T12:27:54.149+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO SparkEnv: Registering BlockManagerMaster
+[2024-10-11T12:27:54.171+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+[2024-10-11T12:27:54.171+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+[2024-10-11T12:27:54.174+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+[2024-10-11T12:27:54.189+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-9d3ed851-b54e-4cce-b81e-698d9d48c9d8
+[2024-10-11T12:27:54.199+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+[2024-10-11T12:27:54.207+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO SparkEnv: Registering OutputCommitCoordinator
+[2024-10-11T12:27:54.326+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+[2024-10-11T12:27:54.348+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO SparkContext: Added JAR file:///home/airflow/.ivy2/jars/org.apache.sedona_sedona-python-adapter-3.0_2.12-1.2.0-incubating.jar at spark://yellow-cab-airflow-scheduler:37753/jars/org.apache.sedona_sedona-python-adapter-3.0_2.12-1.2.0-incubating.jar with timestamp 1728649673835
+[2024-10-11T12:27:54.349+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO SparkContext: Added JAR file:///home/airflow/.ivy2/jars/org.datasyslab_geotools-wrapper-geotools-24.0.jar at spark://yellow-cab-airflow-scheduler:37753/jars/org.datasyslab_geotools-wrapper-geotools-24.0.jar with timestamp 1728649673835
+[2024-10-11T12:27:54.349+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO SparkContext: Added JAR file:///home/airflow/.ivy2/jars/org.locationtech.jts_jts-core-1.18.0.jar at spark://yellow-cab-airflow-scheduler:37753/jars/org.locationtech.jts_jts-core-1.18.0.jar with timestamp 1728649673835
+[2024-10-11T12:27:54.349+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO SparkContext: Added JAR file:///home/airflow/.ivy2/jars/org.wololo_jts2geojson-0.16.1.jar at spark://yellow-cab-airflow-scheduler:37753/jars/org.wololo_jts2geojson-0.16.1.jar with timestamp 1728649673835
+[2024-10-11T12:27:54.349+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO SparkContext: Added JAR file:///home/airflow/.ivy2/jars/org.apache.sedona_sedona-core-3.0_2.12-1.2.0-incubating.jar at spark://yellow-cab-airflow-scheduler:37753/jars/org.apache.sedona_sedona-core-3.0_2.12-1.2.0-incubating.jar with timestamp 1728649673835
+[2024-10-11T12:27:54.349+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO SparkContext: Added JAR file:///home/airflow/.ivy2/jars/org.apache.sedona_sedona-sql-3.0_2.12-1.2.0-incubating.jar at spark://yellow-cab-airflow-scheduler:37753/jars/org.apache.sedona_sedona-sql-3.0_2.12-1.2.0-incubating.jar with timestamp 1728649673835
+[2024-10-11T12:27:54.350+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO SparkContext: Added JAR file:///home/airflow/.ivy2/jars/org.scala-lang.modules_scala-collection-compat_2.12-2.5.0.jar at spark://yellow-cab-airflow-scheduler:37753/jars/org.scala-lang.modules_scala-collection-compat_2.12-2.5.0.jar with timestamp 1728649673835
+[2024-10-11T12:27:54.351+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO SparkContext: Added file file:///home/airflow/.ivy2/jars/org.apache.sedona_sedona-python-adapter-3.0_2.12-1.2.0-incubating.jar at spark://yellow-cab-airflow-scheduler:37753/files/org.apache.sedona_sedona-python-adapter-3.0_2.12-1.2.0-incubating.jar with timestamp 1728649673835
+[2024-10-11T12:27:54.351+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO Utils: Copying /home/airflow/.ivy2/jars/org.apache.sedona_sedona-python-adapter-3.0_2.12-1.2.0-incubating.jar to /tmp/spark-266d7b7b-89c3-4157-8598-a594acb6c362/userFiles-40f6c47e-a823-4a95-b9b8-68be0255f1fc/org.apache.sedona_sedona-python-adapter-3.0_2.12-1.2.0-incubating.jar
+[2024-10-11T12:27:54.372+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO SparkContext: Added file file:///home/airflow/.ivy2/jars/org.datasyslab_geotools-wrapper-geotools-24.0.jar at spark://yellow-cab-airflow-scheduler:37753/files/org.datasyslab_geotools-wrapper-geotools-24.0.jar with timestamp 1728649673835
+[2024-10-11T12:27:54.373+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO Utils: Copying /home/airflow/.ivy2/jars/org.datasyslab_geotools-wrapper-geotools-24.0.jar to /tmp/spark-266d7b7b-89c3-4157-8598-a594acb6c362/userFiles-40f6c47e-a823-4a95-b9b8-68be0255f1fc/org.datasyslab_geotools-wrapper-geotools-24.0.jar
+[2024-10-11T12:27:54.411+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO SparkContext: Added file file:///home/airflow/.ivy2/jars/org.locationtech.jts_jts-core-1.18.0.jar at spark://yellow-cab-airflow-scheduler:37753/files/org.locationtech.jts_jts-core-1.18.0.jar with timestamp 1728649673835
+[2024-10-11T12:27:54.412+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO Utils: Copying /home/airflow/.ivy2/jars/org.locationtech.jts_jts-core-1.18.0.jar to /tmp/spark-266d7b7b-89c3-4157-8598-a594acb6c362/userFiles-40f6c47e-a823-4a95-b9b8-68be0255f1fc/org.locationtech.jts_jts-core-1.18.0.jar
+[2024-10-11T12:27:54.431+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO SparkContext: Added file file:///home/airflow/.ivy2/jars/org.wololo_jts2geojson-0.16.1.jar at spark://yellow-cab-airflow-scheduler:37753/files/org.wololo_jts2geojson-0.16.1.jar with timestamp 1728649673835
+[2024-10-11T12:27:54.431+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO Utils: Copying /home/airflow/.ivy2/jars/org.wololo_jts2geojson-0.16.1.jar to /tmp/spark-266d7b7b-89c3-4157-8598-a594acb6c362/userFiles-40f6c47e-a823-4a95-b9b8-68be0255f1fc/org.wololo_jts2geojson-0.16.1.jar
+[2024-10-11T12:27:54.453+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO SparkContext: Added file file:///home/airflow/.ivy2/jars/org.apache.sedona_sedona-core-3.0_2.12-1.2.0-incubating.jar at spark://yellow-cab-airflow-scheduler:37753/files/org.apache.sedona_sedona-core-3.0_2.12-1.2.0-incubating.jar with timestamp 1728649673835
+[2024-10-11T12:27:54.453+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO Utils: Copying /home/airflow/.ivy2/jars/org.apache.sedona_sedona-core-3.0_2.12-1.2.0-incubating.jar to /tmp/spark-266d7b7b-89c3-4157-8598-a594acb6c362/userFiles-40f6c47e-a823-4a95-b9b8-68be0255f1fc/org.apache.sedona_sedona-core-3.0_2.12-1.2.0-incubating.jar
+[2024-10-11T12:27:54.465+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO SparkContext: Added file file:///home/airflow/.ivy2/jars/org.apache.sedona_sedona-sql-3.0_2.12-1.2.0-incubating.jar at spark://yellow-cab-airflow-scheduler:37753/files/org.apache.sedona_sedona-sql-3.0_2.12-1.2.0-incubating.jar with timestamp 1728649673835
+[2024-10-11T12:27:54.466+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO Utils: Copying /home/airflow/.ivy2/jars/org.apache.sedona_sedona-sql-3.0_2.12-1.2.0-incubating.jar to /tmp/spark-266d7b7b-89c3-4157-8598-a594acb6c362/userFiles-40f6c47e-a823-4a95-b9b8-68be0255f1fc/org.apache.sedona_sedona-sql-3.0_2.12-1.2.0-incubating.jar
+[2024-10-11T12:27:54.477+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO SparkContext: Added file file:///home/airflow/.ivy2/jars/org.scala-lang.modules_scala-collection-compat_2.12-2.5.0.jar at spark://yellow-cab-airflow-scheduler:37753/files/org.scala-lang.modules_scala-collection-compat_2.12-2.5.0.jar with timestamp 1728649673835
+[2024-10-11T12:27:54.478+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO Utils: Copying /home/airflow/.ivy2/jars/org.scala-lang.modules_scala-collection-compat_2.12-2.5.0.jar to /tmp/spark-266d7b7b-89c3-4157-8598-a594acb6c362/userFiles-40f6c47e-a823-4a95-b9b8-68be0255f1fc/org.scala-lang.modules_scala-collection-compat_2.12-2.5.0.jar
+[2024-10-11T12:27:54.549+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO StandaloneAppClient$ClientEndpoint: Connecting to master spark://spark-master:7077...
+[2024-10-11T12:27:54.577+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO TransportClientFactory: Successfully created connection to spark-master/172.24.0.2:7077 after 15 ms (0 ms spent in bootstraps)
+[2024-10-11T12:27:54.653+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO StandaloneSchedulerBackend: Connected to Spark cluster with app ID app-20241011122754-0008
+[2024-10-11T12:27:54.655+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20241011122754-0008/0 on worker-20241011080942-172.24.0.3-37269 (172.24.0.3:37269) with 4 core(s)
+[2024-10-11T12:27:54.657+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO StandaloneSchedulerBackend: Granted executor ID app-20241011122754-0008/0 on hostPort 172.24.0.3:37269 with 4 core(s), 1024.0 MiB RAM
+[2024-10-11T12:27:54.659+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 46441.
+[2024-10-11T12:27:54.660+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO NettyBlockTransferService: Server created on yellow-cab-airflow-scheduler:46441
+[2024-10-11T12:27:54.664+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+[2024-10-11T12:27:54.674+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, yellow-cab-airflow-scheduler, 46441, None)
+[2024-10-11T12:27:54.682+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO BlockManagerMasterEndpoint: Registering block manager yellow-cab-airflow-scheduler:46441 with 434.4 MiB RAM, BlockManagerId(driver, yellow-cab-airflow-scheduler, 46441, None)
+[2024-10-11T12:27:54.689+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, yellow-cab-airflow-scheduler, 46441, None)
+[2024-10-11T12:27:54.691+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, yellow-cab-airflow-scheduler, 46441, None)
+[2024-10-11T12:27:54.792+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20241011122754-0008/0 is now RUNNING
+[2024-10-11T12:27:54.856+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO StandaloneSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+[2024-10-11T12:27:54.962+0000] {spark_submit.py:649} INFO - /spark-scripts/taxi_etl.py:27: DeprecationWarning: Call to deprecated function registerAll (Deprecated since 1.4.1, use SedonaContext.create() instead.).
+[2024-10-11T12:27:54.965+0000] {spark_submit.py:649} INFO - SedonaRegistrator.registerAll(spark)
+[2024-10-11T12:27:54.966+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+[2024-10-11T12:27:54.968+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:54 INFO SharedState: Warehouse path is 'file:/opt/airflow/spark-warehouse'.
+[2024-10-11T12:27:57.248+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:57 INFO CoarseGrainedSchedulerBackend$DriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (172.24.0.3:45652) with ID 0,  ResourceProfileId 0
+[2024-10-11T12:27:57.325+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:57 INFO BlockManagerMasterEndpoint: Registering block manager 172.24.0.3:33977 with 434.4 MiB RAM, BlockManagerId(0, 172.24.0.3, 33977, None)
+[2024-10-11T12:27:57.866+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:57 INFO CodeGenerator: Code generated in 135.082875 ms
+[2024-10-11T12:27:57.954+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:57 INFO DAGScheduler: Registering RDD 2 (count at NativeMethodAccessorImpl.java:0) as input to shuffle 0
+[2024-10-11T12:27:57.958+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:57 INFO DAGScheduler: Got map stage job 0 (count at NativeMethodAccessorImpl.java:0) with 1 output partitions
+[2024-10-11T12:27:57.958+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:57 INFO DAGScheduler: Final stage: ShuffleMapStage 0 (count at NativeMethodAccessorImpl.java:0)
+[2024-10-11T12:27:57.959+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:57 INFO DAGScheduler: Parents of final stage: List()
+[2024-10-11T12:27:57.959+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:57 INFO DAGScheduler: Missing parents: List()
+[2024-10-11T12:27:57.965+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:57 INFO DAGScheduler: Submitting ShuffleMapStage 0 (MapPartitionsRDD[2] at count at NativeMethodAccessorImpl.java:0), which has no missing parents
+[2024-10-11T12:27:58.044+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:58 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 10.7 KiB, free 434.4 MiB)
+[2024-10-11T12:27:58.069+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:58 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 5.5 KiB, free 434.4 MiB)
+[2024-10-11T12:27:58.072+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:58 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on yellow-cab-airflow-scheduler:46441 (size: 5.5 KiB, free: 434.4 MiB)
+[2024-10-11T12:27:58.074+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:58 INFO SparkContext: Created broadcast 0 from broadcast at DAGScheduler.scala:1513
+[2024-10-11T12:27:58.097+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:58 INFO DAGScheduler: Submitting 1 missing tasks from ShuffleMapStage 0 (MapPartitionsRDD[2] at count at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0))
+[2024-10-11T12:27:58.099+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:58 INFO TaskSchedulerImpl: Adding task set 0.0 with 1 tasks resource profile 0
+[2024-10-11T12:27:58.316+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:58 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0) (172.24.0.3, executor 0, partition 0, PROCESS_LOCAL, 4654 bytes) taskResourceAssignments Map()
+[2024-10-11T12:27:58.517+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:58 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on 172.24.0.3:33977 (size: 5.5 KiB, free: 434.4 MiB)
+[2024-10-11T12:27:59.157+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 849 ms on 172.24.0.3 (executor 0) (1/1)
+[2024-10-11T12:27:59.158+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool
+[2024-10-11T12:27:59.164+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO DAGScheduler: ShuffleMapStage 0 (count at NativeMethodAccessorImpl.java:0) finished in 1.184 s
+[2024-10-11T12:27:59.164+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO DAGScheduler: looking for newly runnable stages
+[2024-10-11T12:27:59.165+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO DAGScheduler: running: Set()
+[2024-10-11T12:27:59.165+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO DAGScheduler: waiting: Set()
+[2024-10-11T12:27:59.165+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO DAGScheduler: failed: Set()
+[2024-10-11T12:27:59.200+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO CodeGenerator: Code generated in 12.415792 ms
+[2024-10-11T12:27:59.239+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO SparkContext: Starting job: count at NativeMethodAccessorImpl.java:0
+[2024-10-11T12:27:59.242+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO DAGScheduler: Got job 1 (count at NativeMethodAccessorImpl.java:0) with 1 output partitions
+[2024-10-11T12:27:59.243+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO DAGScheduler: Final stage: ResultStage 2 (count at NativeMethodAccessorImpl.java:0)
+[2024-10-11T12:27:59.243+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 1)
+[2024-10-11T12:27:59.244+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO DAGScheduler: Missing parents: List()
+[2024-10-11T12:27:59.245+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO DAGScheduler: Submitting ResultStage 2 (MapPartitionsRDD[5] at count at NativeMethodAccessorImpl.java:0), which has no missing parents
+[2024-10-11T12:27:59.252+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 11.1 KiB, free 434.4 MiB)
+[2024-10-11T12:27:59.253+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 5.5 KiB, free 434.4 MiB)
+[2024-10-11T12:27:59.254+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on yellow-cab-airflow-scheduler:46441 (size: 5.5 KiB, free: 434.4 MiB)
+[2024-10-11T12:27:59.255+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1513
+[2024-10-11T12:27:59.256+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 2 (MapPartitionsRDD[5] at count at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0))
+[2024-10-11T12:27:59.256+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO TaskSchedulerImpl: Adding task set 2.0 with 1 tasks resource profile 0
+[2024-10-11T12:27:59.261+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO TaskSetManager: Starting task 0.0 in stage 2.0 (TID 1) (172.24.0.3, executor 0, partition 0, NODE_LOCAL, 4457 bytes) taskResourceAssignments Map()
+[2024-10-11T12:27:59.284+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on 172.24.0.3:33977 (size: 5.5 KiB, free: 434.4 MiB)
+[2024-10-11T12:27:59.328+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO MapOutputTrackerMasterEndpoint: Asked to send map output locations for shuffle 0 to 172.24.0.3:45652
+[2024-10-11T12:27:59.410+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO TaskSetManager: Finished task 0.0 in stage 2.0 (TID 1) in 151 ms on 172.24.0.3 (executor 0) (1/1)
+[2024-10-11T12:27:59.411+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO TaskSchedulerImpl: Removed TaskSet 2.0, whose tasks have all completed, from pool
+[2024-10-11T12:27:59.411+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO DAGScheduler: ResultStage 2 (count at NativeMethodAccessorImpl.java:0) finished in 0.162 s
+[2024-10-11T12:27:59.412+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO DAGScheduler: Job 1 is finished. Cancelling potential speculative or zombie tasks for this job
+[2024-10-11T12:27:59.412+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO TaskSchedulerImpl: Killing all running tasks in stage 2: Stage finished
+[2024-10-11T12:27:59.414+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO DAGScheduler: Job 1 finished: count at NativeMethodAccessorImpl.java:0, took 0.174153 s
+[2024-10-11T12:27:59.636+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO InMemoryFileIndex: It took 9 ms to list leaf files for 1 paths.
+[2024-10-11T12:27:59.663+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO InMemoryFileIndex: It took 1 ms to list leaf files for 1 paths.
+[2024-10-11T12:27:59.782+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO FileSourceStrategy: Pushed Filters:
+[2024-10-11T12:27:59.782+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO FileSourceStrategy: Post-Scan Filters: (length(trim(value#14, None)) > 0)
+[2024-10-11T12:27:59.783+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO FileSourceStrategy: Output Data Schema: struct<value: string>
+[2024-10-11T12:27:59.807+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO CodeGenerator: Code generated in 9.862375 ms
+[2024-10-11T12:27:59.821+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO MemoryStore: Block broadcast_2 stored as values in memory (estimated size 204.3 KiB, free 434.2 MiB)
+[2024-10-11T12:27:59.840+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 35.3 KiB, free 434.1 MiB)
+[2024-10-11T12:27:59.842+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO BlockManagerInfo: Added broadcast_2_piece0 in memory on yellow-cab-airflow-scheduler:46441 (size: 35.3 KiB, free: 434.4 MiB)
+[2024-10-11T12:27:59.843+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO SparkContext: Created broadcast 2 from csv at NativeMethodAccessorImpl.java:0
+[2024-10-11T12:27:59.849+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+[2024-10-11T12:27:59.886+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO SparkContext: Starting job: csv at NativeMethodAccessorImpl.java:0
+[2024-10-11T12:27:59.887+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO DAGScheduler: Got job 2 (csv at NativeMethodAccessorImpl.java:0) with 1 output partitions
+[2024-10-11T12:27:59.888+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO DAGScheduler: Final stage: ResultStage 3 (csv at NativeMethodAccessorImpl.java:0)
+[2024-10-11T12:27:59.888+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO DAGScheduler: Parents of final stage: List()
+[2024-10-11T12:27:59.888+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO DAGScheduler: Missing parents: List()
+[2024-10-11T12:27:59.889+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO DAGScheduler: Submitting ResultStage 3 (MapPartitionsRDD[9] at csv at NativeMethodAccessorImpl.java:0), which has no missing parents
+[2024-10-11T12:27:59.897+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO MemoryStore: Block broadcast_3 stored as values in memory (estimated size 11.8 KiB, free 434.1 MiB)
+[2024-10-11T12:27:59.898+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 5.9 KiB, free 434.1 MiB)
+[2024-10-11T12:27:59.899+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO BlockManagerInfo: Added broadcast_3_piece0 in memory on yellow-cab-airflow-scheduler:46441 (size: 5.9 KiB, free: 434.3 MiB)
+[2024-10-11T12:27:59.900+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO BlockManagerInfo: Removed broadcast_1_piece0 on yellow-cab-airflow-scheduler:46441 in memory (size: 5.5 KiB, free: 434.4 MiB)
+[2024-10-11T12:27:59.900+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO SparkContext: Created broadcast 3 from broadcast at DAGScheduler.scala:1513
+[2024-10-11T12:27:59.901+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 3 (MapPartitionsRDD[9] at csv at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0))
+[2024-10-11T12:27:59.902+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO TaskSchedulerImpl: Adding task set 3.0 with 1 tasks resource profile 0
+[2024-10-11T12:27:59.903+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO TaskSetManager: Starting task 0.0 in stage 3.0 (TID 2) (172.24.0.3, executor 0, partition 0, PROCESS_LOCAL, 4915 bytes) taskResourceAssignments Map()
+[2024-10-11T12:27:59.908+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO BlockManagerInfo: Removed broadcast_1_piece0 on 172.24.0.3:33977 in memory (size: 5.5 KiB, free: 434.4 MiB)
+[2024-10-11T12:27:59.919+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO BlockManagerInfo: Removed broadcast_0_piece0 on yellow-cab-airflow-scheduler:46441 in memory (size: 5.5 KiB, free: 434.4 MiB)
+[2024-10-11T12:27:59.921+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO BlockManagerInfo: Removed broadcast_0_piece0 on 172.24.0.3:33977 in memory (size: 5.5 KiB, free: 434.4 MiB)
+[2024-10-11T12:27:59.921+0000] {spark_submit.py:649} INFO - 24/10/11 12:27:59 INFO BlockManagerInfo: Added broadcast_3_piece0 in memory on 172.24.0.3:33977 (size: 5.9 KiB, free: 434.4 MiB)
+[2024-10-11T12:28:00.019+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO BlockManagerInfo: Added broadcast_2_piece0 in memory on 172.24.0.3:33977 (size: 35.3 KiB, free: 434.4 MiB)
+[2024-10-11T12:28:00.141+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO TaskSetManager: Finished task 0.0 in stage 3.0 (TID 2) in 239 ms on 172.24.0.3 (executor 0) (1/1)
+[2024-10-11T12:28:00.142+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO TaskSchedulerImpl: Removed TaskSet 3.0, whose tasks have all completed, from pool
+[2024-10-11T12:28:00.142+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO DAGScheduler: ResultStage 3 (csv at NativeMethodAccessorImpl.java:0) finished in 0.252 s
+[2024-10-11T12:28:00.146+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO DAGScheduler: Job 2 is finished. Cancelling potential speculative or zombie tasks for this job
+[2024-10-11T12:28:00.147+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO TaskSchedulerImpl: Killing all running tasks in stage 3: Stage finished
+[2024-10-11T12:28:00.148+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO DAGScheduler: Job 2 finished: csv at NativeMethodAccessorImpl.java:0, took 0.256308 s
+[2024-10-11T12:28:00.155+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO CodeGenerator: Code generated in 5.89725 ms
+[2024-10-11T12:28:00.178+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO FileSourceStrategy: Pushed Filters:
+[2024-10-11T12:28:00.179+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO FileSourceStrategy: Post-Scan Filters:
+[2024-10-11T12:28:00.179+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO FileSourceStrategy: Output Data Schema: struct<value: string>
+[2024-10-11T12:28:00.183+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO MemoryStore: Block broadcast_4 stored as values in memory (estimated size 204.3 KiB, free 433.9 MiB)
+[2024-10-11T12:28:00.191+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO BlockManagerInfo: Removed broadcast_3_piece0 on yellow-cab-airflow-scheduler:46441 in memory (size: 5.9 KiB, free: 434.4 MiB)
+[2024-10-11T12:28:00.193+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO MemoryStore: Block broadcast_4_piece0 stored as bytes in memory (estimated size 35.3 KiB, free 433.9 MiB)
+[2024-10-11T12:28:00.194+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO BlockManagerInfo: Added broadcast_4_piece0 in memory on yellow-cab-airflow-scheduler:46441 (size: 35.3 KiB, free: 434.3 MiB)
+[2024-10-11T12:28:00.195+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO SparkContext: Created broadcast 4 from csv at NativeMethodAccessorImpl.java:0
+[2024-10-11T12:28:00.196+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO BlockManagerInfo: Removed broadcast_3_piece0 on 172.24.0.3:33977 in memory (size: 5.9 KiB, free: 434.4 MiB)
+[2024-10-11T12:28:00.196+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+[2024-10-11T12:28:00.231+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO SparkContext: Starting job: csv at NativeMethodAccessorImpl.java:0
+[2024-10-11T12:28:00.231+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO DAGScheduler: Got job 3 (csv at NativeMethodAccessorImpl.java:0) with 2 output partitions
+[2024-10-11T12:28:00.232+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO DAGScheduler: Final stage: ResultStage 4 (csv at NativeMethodAccessorImpl.java:0)
+[2024-10-11T12:28:00.232+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO DAGScheduler: Parents of final stage: List()
+[2024-10-11T12:28:00.232+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO DAGScheduler: Missing parents: List()
+[2024-10-11T12:28:00.232+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO DAGScheduler: Submitting ResultStage 4 (MapPartitionsRDD[15] at csv at NativeMethodAccessorImpl.java:0), which has no missing parents
+[2024-10-11T12:28:00.243+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO MemoryStore: Block broadcast_5 stored as values in memory (estimated size 28.5 KiB, free 433.9 MiB)
+[2024-10-11T12:28:00.247+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO MemoryStore: Block broadcast_5_piece0 stored as bytes in memory (estimated size 12.6 KiB, free 433.9 MiB)
+[2024-10-11T12:28:00.248+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO BlockManagerInfo: Added broadcast_5_piece0 in memory on yellow-cab-airflow-scheduler:46441 (size: 12.6 KiB, free: 434.3 MiB)
+[2024-10-11T12:28:00.248+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO SparkContext: Created broadcast 5 from broadcast at DAGScheduler.scala:1513
+[2024-10-11T12:28:00.249+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO DAGScheduler: Submitting 2 missing tasks from ResultStage 4 (MapPartitionsRDD[15] at csv at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0, 1))
+[2024-10-11T12:28:00.249+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO TaskSchedulerImpl: Adding task set 4.0 with 2 tasks resource profile 0
+[2024-10-11T12:28:00.250+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO TaskSetManager: Starting task 0.0 in stage 4.0 (TID 3) (172.24.0.3, executor 0, partition 0, PROCESS_LOCAL, 4915 bytes) taskResourceAssignments Map()
+[2024-10-11T12:28:00.250+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO TaskSetManager: Starting task 1.0 in stage 4.0 (TID 4) (172.24.0.3, executor 0, partition 1, PROCESS_LOCAL, 4915 bytes) taskResourceAssignments Map()
+[2024-10-11T12:28:00.271+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:00 INFO BlockManagerInfo: Added broadcast_5_piece0 in memory on 172.24.0.3:33977 (size: 12.6 KiB, free: 434.4 MiB)
+[2024-10-11T12:28:01.033+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:01 INFO BlockManagerInfo: Added broadcast_4_piece0 in memory on 172.24.0.3:33977 (size: 35.3 KiB, free: 434.3 MiB)
+[2024-10-11T12:28:01.581+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:01 INFO TaskSetManager: Finished task 1.0 in stage 4.0 (TID 4) in 1331 ms on 172.24.0.3 (executor 0) (1/2)
+[2024-10-11T12:28:01.588+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:01 INFO TaskSetManager: Finished task 0.0 in stage 4.0 (TID 3) in 1338 ms on 172.24.0.3 (executor 0) (2/2)
+[2024-10-11T12:28:01.589+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:01 INFO TaskSchedulerImpl: Removed TaskSet 4.0, whose tasks have all completed, from pool
+[2024-10-11T12:28:01.589+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:01 INFO DAGScheduler: ResultStage 4 (csv at NativeMethodAccessorImpl.java:0) finished in 1.356 s
+[2024-10-11T12:28:01.590+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:01 INFO DAGScheduler: Job 3 is finished. Cancelling potential speculative or zombie tasks for this job
+[2024-10-11T12:28:01.590+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:01 INFO TaskSchedulerImpl: Killing all running tasks in stage 4: Stage finished
+[2024-10-11T12:28:01.590+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:01 INFO DAGScheduler: Job 3 finished: csv at NativeMethodAccessorImpl.java:0, took 1.359157 s
+[2024-10-11T12:28:02.121+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO FileSourceStrategy: Pushed Filters:
+[2024-10-11T12:28:02.122+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO FileSourceStrategy: Post-Scan Filters: atleastnnonnulls(4, tpep_pickup_datetime#32, tpep_dropoff_datetime#33, pickup_longitude#36, pickup_latitude#37)
+[2024-10-11T12:28:02.122+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO FileSourceStrategy: Output Data Schema: struct<VendorID: int, tpep_pickup_datetime: timestamp, tpep_dropoff_datetime: timestamp, pickup_longitude: double, pickup_latitude: double ... 3 more fields>
+[2024-10-11T12:28:02.143+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO HashAggregateExec: spark.sql.codegen.aggregate.map.twolevel.enabled is set to true, but current version of codegened fast hashmap does not support this aggregate.
+[2024-10-11T12:28:02.189+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO CodeGenerator: Code generated in 35.359208 ms
+[2024-10-11T12:28:02.192+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO MemoryStore: Block broadcast_6 stored as values in memory (estimated size 204.2 KiB, free 433.7 MiB)
+[2024-10-11T12:28:02.200+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO BlockManagerInfo: Removed broadcast_5_piece0 on yellow-cab-airflow-scheduler:46441 in memory (size: 12.6 KiB, free: 434.3 MiB)
+[2024-10-11T12:28:02.203+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO MemoryStore: Block broadcast_6_piece0 stored as bytes in memory (estimated size 35.3 KiB, free 433.7 MiB)
+[2024-10-11T12:28:02.204+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO BlockManagerInfo: Removed broadcast_5_piece0 on 172.24.0.3:33977 in memory (size: 12.6 KiB, free: 434.3 MiB)
+[2024-10-11T12:28:02.204+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO BlockManagerInfo: Added broadcast_6_piece0 in memory on yellow-cab-airflow-scheduler:46441 (size: 35.3 KiB, free: 434.3 MiB)
+[2024-10-11T12:28:02.205+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO SparkContext: Created broadcast 6 from toPandas at /spark-scripts/taxi_etl.py:117
+[2024-10-11T12:28:02.209+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+[2024-10-11T12:28:02.217+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO DAGScheduler: Registering RDD 19 (toPandas at /spark-scripts/taxi_etl.py:117) as input to shuffle 1
+[2024-10-11T12:28:02.217+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO DAGScheduler: Got map stage job 4 (toPandas at /spark-scripts/taxi_etl.py:117) with 2 output partitions
+[2024-10-11T12:28:02.218+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO DAGScheduler: Final stage: ShuffleMapStage 5 (toPandas at /spark-scripts/taxi_etl.py:117)
+[2024-10-11T12:28:02.218+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO DAGScheduler: Parents of final stage: List()
+[2024-10-11T12:28:02.218+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO DAGScheduler: Missing parents: List()
+[2024-10-11T12:28:02.218+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO DAGScheduler: Submitting ShuffleMapStage 5 (MapPartitionsRDD[19] at toPandas at /spark-scripts/taxi_etl.py:117), which has no missing parents
+[2024-10-11T12:28:02.220+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO MemoryStore: Block broadcast_7 stored as values in memory (estimated size 27.4 KiB, free 433.7 MiB)
+[2024-10-11T12:28:02.224+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO MemoryStore: Block broadcast_7_piece0 stored as bytes in memory (estimated size 12.7 KiB, free 433.7 MiB)
+[2024-10-11T12:28:02.225+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO BlockManagerInfo: Added broadcast_7_piece0 in memory on yellow-cab-airflow-scheduler:46441 (size: 12.7 KiB, free: 434.3 MiB)
+[2024-10-11T12:28:02.225+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO SparkContext: Created broadcast 7 from broadcast at DAGScheduler.scala:1513
+[2024-10-11T12:28:02.226+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO DAGScheduler: Submitting 2 missing tasks from ShuffleMapStage 5 (MapPartitionsRDD[19] at toPandas at /spark-scripts/taxi_etl.py:117) (first 15 tasks are for partitions Vector(0, 1))
+[2024-10-11T12:28:02.226+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO TaskSchedulerImpl: Adding task set 5.0 with 2 tasks resource profile 0
+[2024-10-11T12:28:02.227+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO TaskSetManager: Starting task 0.0 in stage 5.0 (TID 5) (172.24.0.3, executor 0, partition 0, PROCESS_LOCAL, 4904 bytes) taskResourceAssignments Map()
+[2024-10-11T12:28:02.228+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO TaskSetManager: Starting task 1.0 in stage 5.0 (TID 6) (172.24.0.3, executor 0, partition 1, PROCESS_LOCAL, 4904 bytes) taskResourceAssignments Map()
+[2024-10-11T12:28:02.240+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO BlockManagerInfo: Added broadcast_7_piece0 in memory on 172.24.0.3:33977 (size: 12.7 KiB, free: 434.3 MiB)
+[2024-10-11T12:28:02.386+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:02 INFO BlockManagerInfo: Added broadcast_6_piece0 in memory on 172.24.0.3:33977 (size: 35.3 KiB, free: 434.3 MiB)
+[2024-10-11T12:28:03.135+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO TaskSetManager: Finished task 1.0 in stage 5.0 (TID 6) in 907 ms on 172.24.0.3 (executor 0) (1/2)
+[2024-10-11T12:28:03.148+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO TaskSetManager: Finished task 0.0 in stage 5.0 (TID 5) in 921 ms on 172.24.0.3 (executor 0) (2/2)
+[2024-10-11T12:28:03.149+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO TaskSchedulerImpl: Removed TaskSet 5.0, whose tasks have all completed, from pool
+[2024-10-11T12:28:03.149+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO DAGScheduler: ShuffleMapStage 5 (toPandas at /spark-scripts/taxi_etl.py:117) finished in 0.931 s
+[2024-10-11T12:28:03.150+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO DAGScheduler: looking for newly runnable stages
+[2024-10-11T12:28:03.150+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO DAGScheduler: running: Set()
+[2024-10-11T12:28:03.151+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO DAGScheduler: waiting: Set()
+[2024-10-11T12:28:03.151+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO DAGScheduler: failed: Set()
+[2024-10-11T12:28:03.162+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO ShufflePartitionsUtil: For shuffle(1), advisory target size: 67108864, actual target size 1048576, minimum partition size: 1048576
+[2024-10-11T12:28:03.172+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO HashAggregateExec: spark.sql.codegen.aggregate.map.twolevel.enabled is set to true, but current version of codegened fast hashmap does not support this aggregate.
+[2024-10-11T12:28:03.189+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO CodeGenerator: Code generated in 13.810917 ms
+[2024-10-11T12:28:03.203+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO SparkContext: Starting job: toPandas at /spark-scripts/taxi_etl.py:117
+[2024-10-11T12:28:03.204+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO DAGScheduler: Got job 5 (toPandas at /spark-scripts/taxi_etl.py:117) with 1 output partitions
+[2024-10-11T12:28:03.204+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO DAGScheduler: Final stage: ResultStage 7 (toPandas at /spark-scripts/taxi_etl.py:117)
+[2024-10-11T12:28:03.204+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 6)
+[2024-10-11T12:28:03.205+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO DAGScheduler: Missing parents: List()
+[2024-10-11T12:28:03.205+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO DAGScheduler: Submitting ResultStage 7 (MapPartitionsRDD[22] at toPandas at /spark-scripts/taxi_etl.py:117), which has no missing parents
+[2024-10-11T12:28:03.210+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO MemoryStore: Block broadcast_8 stored as values in memory (estimated size 37.0 KiB, free 433.6 MiB)
+[2024-10-11T12:28:03.216+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO MemoryStore: Block broadcast_8_piece0 stored as bytes in memory (estimated size 17.5 KiB, free 433.6 MiB)
+[2024-10-11T12:28:03.217+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO BlockManagerInfo: Added broadcast_8_piece0 in memory on yellow-cab-airflow-scheduler:46441 (size: 17.5 KiB, free: 434.3 MiB)
+[2024-10-11T12:28:03.217+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO SparkContext: Created broadcast 8 from broadcast at DAGScheduler.scala:1513
+[2024-10-11T12:28:03.219+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO BlockManagerInfo: Removed broadcast_7_piece0 on yellow-cab-airflow-scheduler:46441 in memory (size: 12.7 KiB, free: 434.3 MiB)
+[2024-10-11T12:28:03.220+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 7 (MapPartitionsRDD[22] at toPandas at /spark-scripts/taxi_etl.py:117) (first 15 tasks are for partitions Vector(0))
+[2024-10-11T12:28:03.221+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO TaskSchedulerImpl: Adding task set 7.0 with 1 tasks resource profile 0
+[2024-10-11T12:28:03.226+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO TaskSetManager: Starting task 0.0 in stage 7.0 (TID 7) (172.24.0.3, executor 0, partition 0, NODE_LOCAL, 4457 bytes) taskResourceAssignments Map()
+[2024-10-11T12:28:03.227+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO BlockManagerInfo: Removed broadcast_7_piece0 on 172.24.0.3:33977 in memory (size: 12.7 KiB, free: 434.3 MiB)
+[2024-10-11T12:28:03.238+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO BlockManagerInfo: Added broadcast_8_piece0 in memory on 172.24.0.3:33977 (size: 17.5 KiB, free: 434.3 MiB)
+[2024-10-11T12:28:03.256+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO MapOutputTrackerMasterEndpoint: Asked to send map output locations for shuffle 1 to 172.24.0.3:45652
+[2024-10-11T12:28:03.299+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO TaskSetManager: Finished task 0.0 in stage 7.0 (TID 7) in 74 ms on 172.24.0.3 (executor 0) (1/1)
+[2024-10-11T12:28:03.300+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO TaskSchedulerImpl: Removed TaskSet 7.0, whose tasks have all completed, from pool
+[2024-10-11T12:28:03.300+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO DAGScheduler: ResultStage 7 (toPandas at /spark-scripts/taxi_etl.py:117) finished in 0.090 s
+[2024-10-11T12:28:03.300+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO DAGScheduler: Job 5 is finished. Cancelling potential speculative or zombie tasks for this job
+[2024-10-11T12:28:03.300+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO TaskSchedulerImpl: Killing all running tasks in stage 7: Stage finished
+[2024-10-11T12:28:03.300+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:03 INFO DAGScheduler: Job 5 finished: toPandas at /spark-scripts/taxi_etl.py:117, took 0.096083 s
+[2024-10-11T12:28:15.236+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO FileSourceStrategy: Pushed Filters:
+[2024-10-11T12:28:15.240+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO FileSourceStrategy: Post-Scan Filters: atleastnnonnulls(4, tpep_pickup_datetime#32, tpep_dropoff_datetime#33, pickup_longitude#36, pickup_latitude#37)
+[2024-10-11T12:28:15.240+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO FileSourceStrategy: Output Data Schema: struct<tpep_pickup_datetime: timestamp, tpep_dropoff_datetime: timestamp, pickup_longitude: double, pickup_latitude: double, RatecodeID: int ... 3 more fields>
+[2024-10-11T12:28:15.249+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO HashAggregateExec: spark.sql.codegen.aggregate.map.twolevel.enabled is set to true, but current version of codegened fast hashmap does not support this aggregate.
+[2024-10-11T12:28:15.269+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO CodeGenerator: Code generated in 16.364125 ms
+[2024-10-11T12:28:15.272+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO MemoryStore: Block broadcast_9 stored as values in memory (estimated size 204.2 KiB, free 433.4 MiB)
+[2024-10-11T12:28:15.283+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO BlockManagerInfo: Removed broadcast_8_piece0 on yellow-cab-airflow-scheduler:46441 in memory (size: 17.5 KiB, free: 434.3 MiB)
+[2024-10-11T12:28:15.287+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO BlockManagerInfo: Removed broadcast_8_piece0 on 172.24.0.3:33977 in memory (size: 17.5 KiB, free: 434.3 MiB)
+[2024-10-11T12:28:15.288+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO MemoryStore: Block broadcast_9_piece0 stored as bytes in memory (estimated size 35.3 KiB, free 433.5 MiB)
+[2024-10-11T12:28:15.289+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO BlockManagerInfo: Added broadcast_9_piece0 in memory on yellow-cab-airflow-scheduler:46441 (size: 35.3 KiB, free: 434.3 MiB)
+[2024-10-11T12:28:15.289+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO SparkContext: Created broadcast 9 from toPandas at /spark-scripts/taxi_etl.py:120
+[2024-10-11T12:28:15.291+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+[2024-10-11T12:28:15.296+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO DAGScheduler: Registering RDD 26 (toPandas at /spark-scripts/taxi_etl.py:120) as input to shuffle 2
+[2024-10-11T12:28:15.296+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO DAGScheduler: Got map stage job 6 (toPandas at /spark-scripts/taxi_etl.py:120) with 2 output partitions
+[2024-10-11T12:28:15.296+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO DAGScheduler: Final stage: ShuffleMapStage 8 (toPandas at /spark-scripts/taxi_etl.py:120)
+[2024-10-11T12:28:15.296+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO DAGScheduler: Parents of final stage: List()
+[2024-10-11T12:28:15.296+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO DAGScheduler: Missing parents: List()
+[2024-10-11T12:28:15.297+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO DAGScheduler: Submitting ShuffleMapStage 8 (MapPartitionsRDD[26] at toPandas at /spark-scripts/taxi_etl.py:120), which has no missing parents
+[2024-10-11T12:28:15.299+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO MemoryStore: Block broadcast_10 stored as values in memory (estimated size 27.4 KiB, free 433.4 MiB)
+[2024-10-11T12:28:15.303+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO MemoryStore: Block broadcast_10_piece0 stored as bytes in memory (estimated size 12.7 KiB, free 433.4 MiB)
+[2024-10-11T12:28:15.303+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO BlockManagerInfo: Added broadcast_10_piece0 in memory on yellow-cab-airflow-scheduler:46441 (size: 12.7 KiB, free: 434.2 MiB)
+[2024-10-11T12:28:15.304+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO SparkContext: Created broadcast 10 from broadcast at DAGScheduler.scala:1513
+[2024-10-11T12:28:15.304+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO DAGScheduler: Submitting 2 missing tasks from ShuffleMapStage 8 (MapPartitionsRDD[26] at toPandas at /spark-scripts/taxi_etl.py:120) (first 15 tasks are for partitions Vector(0, 1))
+[2024-10-11T12:28:15.305+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO TaskSchedulerImpl: Adding task set 8.0 with 2 tasks resource profile 0
+[2024-10-11T12:28:15.306+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO TaskSetManager: Starting task 0.0 in stage 8.0 (TID 8) (172.24.0.3, executor 0, partition 0, PROCESS_LOCAL, 4904 bytes) taskResourceAssignments Map()
+[2024-10-11T12:28:15.306+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO TaskSetManager: Starting task 1.0 in stage 8.0 (TID 9) (172.24.0.3, executor 0, partition 1, PROCESS_LOCAL, 4904 bytes) taskResourceAssignments Map()
+[2024-10-11T12:28:15.323+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO BlockManagerInfo: Added broadcast_10_piece0 in memory on 172.24.0.3:33977 (size: 12.7 KiB, free: 434.3 MiB)
+[2024-10-11T12:28:15.387+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO BlockManagerInfo: Added broadcast_9_piece0 in memory on 172.24.0.3:33977 (size: 35.3 KiB, free: 434.2 MiB)
+[2024-10-11T12:28:15.558+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO TaskSetManager: Finished task 0.0 in stage 8.0 (TID 8) in 253 ms on 172.24.0.3 (executor 0) (1/2)
+[2024-10-11T12:28:15.564+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO TaskSetManager: Finished task 1.0 in stage 8.0 (TID 9) in 258 ms on 172.24.0.3 (executor 0) (2/2)
+[2024-10-11T12:28:15.565+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO TaskSchedulerImpl: Removed TaskSet 8.0, whose tasks have all completed, from pool
+[2024-10-11T12:28:15.565+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO DAGScheduler: ShuffleMapStage 8 (toPandas at /spark-scripts/taxi_etl.py:120) finished in 0.268 s
+[2024-10-11T12:28:15.565+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO DAGScheduler: looking for newly runnable stages
+[2024-10-11T12:28:15.566+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO DAGScheduler: running: Set()
+[2024-10-11T12:28:15.566+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO DAGScheduler: waiting: Set()
+[2024-10-11T12:28:15.566+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO DAGScheduler: failed: Set()
+[2024-10-11T12:28:15.568+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO ShufflePartitionsUtil: For shuffle(2), advisory target size: 67108864, actual target size 1048576, minimum partition size: 1048576
+[2024-10-11T12:28:15.572+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO HashAggregateExec: spark.sql.codegen.aggregate.map.twolevel.enabled is set to true, but current version of codegened fast hashmap does not support this aggregate.
+[2024-10-11T12:28:15.586+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO CodeGenerator: Code generated in 11.94525 ms
+[2024-10-11T12:28:15.598+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO SparkContext: Starting job: toPandas at /spark-scripts/taxi_etl.py:120
+[2024-10-11T12:28:15.598+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO DAGScheduler: Got job 7 (toPandas at /spark-scripts/taxi_etl.py:120) with 1 output partitions
+[2024-10-11T12:28:15.599+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO DAGScheduler: Final stage: ResultStage 10 (toPandas at /spark-scripts/taxi_etl.py:120)
+[2024-10-11T12:28:15.599+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 9)
+[2024-10-11T12:28:15.599+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO DAGScheduler: Missing parents: List()
+[2024-10-11T12:28:15.599+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO DAGScheduler: Submitting ResultStage 10 (MapPartitionsRDD[29] at toPandas at /spark-scripts/taxi_etl.py:120), which has no missing parents
+[2024-10-11T12:28:15.603+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO MemoryStore: Block broadcast_11 stored as values in memory (estimated size 37.3 KiB, free 433.4 MiB)
+[2024-10-11T12:28:15.610+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO MemoryStore: Block broadcast_11_piece0 stored as bytes in memory (estimated size 17.8 KiB, free 433.4 MiB)
+[2024-10-11T12:28:15.611+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO BlockManagerInfo: Added broadcast_11_piece0 in memory on yellow-cab-airflow-scheduler:46441 (size: 17.8 KiB, free: 434.2 MiB)
+[2024-10-11T12:28:15.612+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO SparkContext: Created broadcast 11 from broadcast at DAGScheduler.scala:1513
+[2024-10-11T12:28:15.613+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 10 (MapPartitionsRDD[29] at toPandas at /spark-scripts/taxi_etl.py:120) (first 15 tasks are for partitions Vector(0))
+[2024-10-11T12:28:15.613+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO TaskSchedulerImpl: Adding task set 10.0 with 1 tasks resource profile 0
+[2024-10-11T12:28:15.613+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO BlockManagerInfo: Removed broadcast_10_piece0 on yellow-cab-airflow-scheduler:46441 in memory (size: 12.7 KiB, free: 434.2 MiB)
+[2024-10-11T12:28:15.614+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO TaskSetManager: Starting task 0.0 in stage 10.0 (TID 10) (172.24.0.3, executor 0, partition 0, NODE_LOCAL, 4457 bytes) taskResourceAssignments Map()
+[2024-10-11T12:28:15.615+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO BlockManagerInfo: Removed broadcast_10_piece0 on 172.24.0.3:33977 in memory (size: 12.7 KiB, free: 434.3 MiB)
+[2024-10-11T12:28:15.624+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO BlockManagerInfo: Added broadcast_11_piece0 in memory on 172.24.0.3:33977 (size: 17.8 KiB, free: 434.2 MiB)
+[2024-10-11T12:28:15.631+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO MapOutputTrackerMasterEndpoint: Asked to send map output locations for shuffle 2 to 172.24.0.3:45652
+[2024-10-11T12:28:15.658+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO TaskSetManager: Finished task 0.0 in stage 10.0 (TID 10) in 45 ms on 172.24.0.3 (executor 0) (1/1)
+[2024-10-11T12:28:15.659+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO TaskSchedulerImpl: Removed TaskSet 10.0, whose tasks have all completed, from pool
+[2024-10-11T12:28:15.659+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO DAGScheduler: ResultStage 10 (toPandas at /spark-scripts/taxi_etl.py:120) finished in 0.058 s
+[2024-10-11T12:28:15.660+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO DAGScheduler: Job 7 is finished. Cancelling potential speculative or zombie tasks for this job
+[2024-10-11T12:28:15.660+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO TaskSchedulerImpl: Killing all running tasks in stage 10: Stage finished
+[2024-10-11T12:28:15.660+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:15 INFO DAGScheduler: Job 7 finished: toPandas at /spark-scripts/taxi_etl.py:120, took 0.062014 s
+[2024-10-11T12:28:27.526+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO FileSourceStrategy: Pushed Filters:
+[2024-10-11T12:28:27.528+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO FileSourceStrategy: Post-Scan Filters: atleastnnonnulls(4, tpep_pickup_datetime#32, tpep_dropoff_datetime#33, pickup_longitude#36, pickup_latitude#37)
+[2024-10-11T12:28:27.528+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO FileSourceStrategy: Output Data Schema: struct<tpep_pickup_datetime: timestamp, tpep_dropoff_datetime: timestamp, pickup_longitude: double, pickup_latitude: double, payment_type: int ... 3 more fields>
+[2024-10-11T12:28:27.542+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO HashAggregateExec: spark.sql.codegen.aggregate.map.twolevel.enabled is set to true, but current version of codegened fast hashmap does not support this aggregate.
+[2024-10-11T12:28:27.553+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO MemoryStore: Block broadcast_12 stored as values in memory (estimated size 204.2 KiB, free 433.2 MiB)
+[2024-10-11T12:28:27.568+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO MemoryStore: Block broadcast_12_piece0 stored as bytes in memory (estimated size 35.3 KiB, free 433.2 MiB)
+[2024-10-11T12:28:27.569+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO BlockManagerInfo: Added broadcast_12_piece0 in memory on yellow-cab-airflow-scheduler:46441 (size: 35.3 KiB, free: 434.2 MiB)
+[2024-10-11T12:28:27.570+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO SparkContext: Created broadcast 12 from toPandas at /spark-scripts/taxi_etl.py:123
+[2024-10-11T12:28:27.572+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+[2024-10-11T12:28:27.599+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO DAGScheduler: Registering RDD 33 (toPandas at /spark-scripts/taxi_etl.py:123) as input to shuffle 3
+[2024-10-11T12:28:27.600+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO DAGScheduler: Got map stage job 8 (toPandas at /spark-scripts/taxi_etl.py:123) with 2 output partitions
+[2024-10-11T12:28:27.600+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO DAGScheduler: Final stage: ShuffleMapStage 11 (toPandas at /spark-scripts/taxi_etl.py:123)
+[2024-10-11T12:28:27.601+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO DAGScheduler: Parents of final stage: List()
+[2024-10-11T12:28:27.602+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO DAGScheduler: Missing parents: List()
+[2024-10-11T12:28:27.603+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO DAGScheduler: Submitting ShuffleMapStage 11 (MapPartitionsRDD[33] at toPandas at /spark-scripts/taxi_etl.py:123), which has no missing parents
+[2024-10-11T12:28:27.608+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO MemoryStore: Block broadcast_13 stored as values in memory (estimated size 27.4 KiB, free 433.2 MiB)
+[2024-10-11T12:28:27.663+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO MemoryStore: Block broadcast_13_piece0 stored as bytes in memory (estimated size 12.7 KiB, free 433.1 MiB)
+[2024-10-11T12:28:27.665+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO BlockManagerInfo: Added broadcast_13_piece0 in memory on yellow-cab-airflow-scheduler:46441 (size: 12.7 KiB, free: 434.2 MiB)
+[2024-10-11T12:28:27.667+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO SparkContext: Created broadcast 13 from broadcast at DAGScheduler.scala:1513
+[2024-10-11T12:28:27.670+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO DAGScheduler: Submitting 2 missing tasks from ShuffleMapStage 11 (MapPartitionsRDD[33] at toPandas at /spark-scripts/taxi_etl.py:123) (first 15 tasks are for partitions Vector(0, 1))
+[2024-10-11T12:28:27.671+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO TaskSchedulerImpl: Adding task set 11.0 with 2 tasks resource profile 0
+[2024-10-11T12:28:27.687+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO TaskSetManager: Starting task 0.0 in stage 11.0 (TID 11) (172.24.0.3, executor 0, partition 0, PROCESS_LOCAL, 4904 bytes) taskResourceAssignments Map()
+[2024-10-11T12:28:27.689+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO TaskSetManager: Starting task 1.0 in stage 11.0 (TID 12) (172.24.0.3, executor 0, partition 1, PROCESS_LOCAL, 4904 bytes) taskResourceAssignments Map()
+[2024-10-11T12:28:27.728+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO BlockManagerInfo: Added broadcast_13_piece0 in memory on 172.24.0.3:33977 (size: 12.7 KiB, free: 434.2 MiB)
+[2024-10-11T12:28:27.764+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO BlockManagerInfo: Added broadcast_12_piece0 in memory on 172.24.0.3:33977 (size: 35.3 KiB, free: 434.2 MiB)
+[2024-10-11T12:28:27.975+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO TaskSetManager: Finished task 0.0 in stage 11.0 (TID 11) in 289 ms on 172.24.0.3 (executor 0) (1/2)
+[2024-10-11T12:28:27.983+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO TaskSetManager: Finished task 1.0 in stage 11.0 (TID 12) in 296 ms on 172.24.0.3 (executor 0) (2/2)
+[2024-10-11T12:28:27.984+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO TaskSchedulerImpl: Removed TaskSet 11.0, whose tasks have all completed, from pool
+[2024-10-11T12:28:27.985+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO DAGScheduler: ShuffleMapStage 11 (toPandas at /spark-scripts/taxi_etl.py:123) finished in 0.381 s
+[2024-10-11T12:28:27.985+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO DAGScheduler: looking for newly runnable stages
+[2024-10-11T12:28:27.986+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO DAGScheduler: running: Set()
+[2024-10-11T12:28:27.986+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO DAGScheduler: waiting: Set()
+[2024-10-11T12:28:27.986+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO DAGScheduler: failed: Set()
+[2024-10-11T12:28:27.989+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO ShufflePartitionsUtil: For shuffle(3), advisory target size: 67108864, actual target size 1048576, minimum partition size: 1048576
+[2024-10-11T12:28:27.996+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:27 INFO HashAggregateExec: spark.sql.codegen.aggregate.map.twolevel.enabled is set to true, but current version of codegened fast hashmap does not support this aggregate.
+[2024-10-11T12:28:28.027+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:28 INFO SparkContext: Starting job: toPandas at /spark-scripts/taxi_etl.py:123
+[2024-10-11T12:28:28.028+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:28 INFO DAGScheduler: Got job 9 (toPandas at /spark-scripts/taxi_etl.py:123) with 1 output partitions
+[2024-10-11T12:28:28.028+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:28 INFO DAGScheduler: Final stage: ResultStage 13 (toPandas at /spark-scripts/taxi_etl.py:123)
+[2024-10-11T12:28:28.028+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:28 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 12)
+[2024-10-11T12:28:28.029+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:28 INFO DAGScheduler: Missing parents: List()
+[2024-10-11T12:28:28.029+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:28 INFO DAGScheduler: Submitting ResultStage 13 (MapPartitionsRDD[36] at toPandas at /spark-scripts/taxi_etl.py:123), which has no missing parents
+[2024-10-11T12:28:28.033+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:28 INFO MemoryStore: Block broadcast_14 stored as values in memory (estimated size 37.3 KiB, free 433.1 MiB)
+[2024-10-11T12:28:28.035+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:28 INFO MemoryStore: Block broadcast_14_piece0 stored as bytes in memory (estimated size 17.7 KiB, free 433.1 MiB)
+[2024-10-11T12:28:28.036+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:28 INFO BlockManagerInfo: Added broadcast_14_piece0 in memory on yellow-cab-airflow-scheduler:46441 (size: 17.7 KiB, free: 434.2 MiB)
+[2024-10-11T12:28:28.036+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:28 INFO SparkContext: Created broadcast 14 from broadcast at DAGScheduler.scala:1513
+[2024-10-11T12:28:28.037+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:28 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 13 (MapPartitionsRDD[36] at toPandas at /spark-scripts/taxi_etl.py:123) (first 15 tasks are for partitions Vector(0))
+[2024-10-11T12:28:28.037+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:28 INFO TaskSchedulerImpl: Adding task set 13.0 with 1 tasks resource profile 0
+[2024-10-11T12:28:28.038+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:28 INFO TaskSetManager: Starting task 0.0 in stage 13.0 (TID 13) (172.24.0.3, executor 0, partition 0, NODE_LOCAL, 4457 bytes) taskResourceAssignments Map()
+[2024-10-11T12:28:28.050+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:28 INFO BlockManagerInfo: Added broadcast_14_piece0 in memory on 172.24.0.3:33977 (size: 17.7 KiB, free: 434.2 MiB)
+[2024-10-11T12:28:28.057+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:28 INFO MapOutputTrackerMasterEndpoint: Asked to send map output locations for shuffle 3 to 172.24.0.3:45652
+[2024-10-11T12:28:28.070+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:28 INFO TaskSetManager: Finished task 0.0 in stage 13.0 (TID 13) in 32 ms on 172.24.0.3 (executor 0) (1/1)
+[2024-10-11T12:28:28.070+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:28 INFO TaskSchedulerImpl: Removed TaskSet 13.0, whose tasks have all completed, from pool
+[2024-10-11T12:28:28.070+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:28 INFO DAGScheduler: ResultStage 13 (toPandas at /spark-scripts/taxi_etl.py:123) finished in 0.039 s
+[2024-10-11T12:28:28.071+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:28 INFO DAGScheduler: Job 9 is finished. Cancelling potential speculative or zombie tasks for this job
+[2024-10-11T12:28:28.071+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:28 INFO TaskSchedulerImpl: Killing all running tasks in stage 13: Stage finished
+[2024-10-11T12:28:28.071+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:28 INFO DAGScheduler: Job 9 finished: toPandas at /spark-scripts/taxi_etl.py:123, took 0.043851 s
+[2024-10-11T12:28:41.858+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO FileSourceStrategy: Pushed Filters:
+[2024-10-11T12:28:41.858+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO FileSourceStrategy: Post-Scan Filters: atleastnnonnulls(4, tpep_pickup_datetime#32, tpep_dropoff_datetime#33, pickup_longitude#36, pickup_latitude#37)
+[2024-10-11T12:28:41.859+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO FileSourceStrategy: Output Data Schema: struct<tpep_pickup_datetime: timestamp, tpep_dropoff_datetime: timestamp, pickup_longitude: double, pickup_latitude: double ... 2 more fields>
+[2024-10-11T12:28:41.877+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO HashAggregateExec: spark.sql.codegen.aggregate.map.twolevel.enabled is set to true, but current version of codegened fast hashmap does not support this aggregate.
+[2024-10-11T12:28:41.915+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO CodeGenerator: Code generated in 31.4075 ms
+[2024-10-11T12:28:41.918+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO MemoryStore: Block broadcast_15 stored as values in memory (estimated size 204.2 KiB, free 432.9 MiB)
+[2024-10-11T12:28:41.928+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO MemoryStore: Block broadcast_15_piece0 stored as bytes in memory (estimated size 35.3 KiB, free 432.9 MiB)
+[2024-10-11T12:28:41.929+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO BlockManagerInfo: Added broadcast_15_piece0 in memory on yellow-cab-airflow-scheduler:46441 (size: 35.3 KiB, free: 434.1 MiB)
+[2024-10-11T12:28:41.929+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO SparkContext: Created broadcast 15 from toPandas at /spark-scripts/taxi_etl.py:126
+[2024-10-11T12:28:41.930+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+[2024-10-11T12:28:41.936+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO DAGScheduler: Registering RDD 40 (toPandas at /spark-scripts/taxi_etl.py:126) as input to shuffle 4
+[2024-10-11T12:28:41.936+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO DAGScheduler: Got map stage job 10 (toPandas at /spark-scripts/taxi_etl.py:126) with 2 output partitions
+[2024-10-11T12:28:41.936+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO DAGScheduler: Final stage: ShuffleMapStage 14 (toPandas at /spark-scripts/taxi_etl.py:126)
+[2024-10-11T12:28:41.936+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO DAGScheduler: Parents of final stage: List()
+[2024-10-11T12:28:41.936+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO DAGScheduler: Missing parents: List()
+[2024-10-11T12:28:41.937+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO DAGScheduler: Submitting ShuffleMapStage 14 (MapPartitionsRDD[40] at toPandas at /spark-scripts/taxi_etl.py:126), which has no missing parents
+[2024-10-11T12:28:41.938+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO MemoryStore: Block broadcast_16 stored as values in memory (estimated size 35.4 KiB, free 432.8 MiB)
+[2024-10-11T12:28:41.941+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO MemoryStore: Block broadcast_16_piece0 stored as bytes in memory (estimated size 16.6 KiB, free 432.8 MiB)
+[2024-10-11T12:28:41.941+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO BlockManagerInfo: Added broadcast_16_piece0 in memory on yellow-cab-airflow-scheduler:46441 (size: 16.6 KiB, free: 434.1 MiB)
+[2024-10-11T12:28:41.942+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO SparkContext: Created broadcast 16 from broadcast at DAGScheduler.scala:1513
+[2024-10-11T12:28:41.942+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO DAGScheduler: Submitting 2 missing tasks from ShuffleMapStage 14 (MapPartitionsRDD[40] at toPandas at /spark-scripts/taxi_etl.py:126) (first 15 tasks are for partitions Vector(0, 1))
+[2024-10-11T12:28:41.942+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO TaskSchedulerImpl: Adding task set 14.0 with 2 tasks resource profile 0
+[2024-10-11T12:28:41.943+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO TaskSetManager: Starting task 0.0 in stage 14.0 (TID 14) (172.24.0.3, executor 0, partition 0, PROCESS_LOCAL, 4904 bytes) taskResourceAssignments Map()
+[2024-10-11T12:28:41.944+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO TaskSetManager: Starting task 1.0 in stage 14.0 (TID 15) (172.24.0.3, executor 0, partition 1, PROCESS_LOCAL, 4904 bytes) taskResourceAssignments Map()
+[2024-10-11T12:28:41.959+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:41 INFO BlockManagerInfo: Added broadcast_16_piece0 in memory on 172.24.0.3:33977 (size: 16.6 KiB, free: 434.2 MiB)
+[2024-10-11T12:28:42.032+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO BlockManagerInfo: Added broadcast_15_piece0 in memory on 172.24.0.3:33977 (size: 35.3 KiB, free: 434.1 MiB)
+[2024-10-11T12:28:42.548+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO TaskSetManager: Finished task 0.0 in stage 14.0 (TID 14) in 605 ms on 172.24.0.3 (executor 0) (1/2)
+[2024-10-11T12:28:42.554+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO TaskSetManager: Finished task 1.0 in stage 14.0 (TID 15) in 610 ms on 172.24.0.3 (executor 0) (2/2)
+[2024-10-11T12:28:42.554+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO TaskSchedulerImpl: Removed TaskSet 14.0, whose tasks have all completed, from pool
+[2024-10-11T12:28:42.555+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO DAGScheduler: ShuffleMapStage 14 (toPandas at /spark-scripts/taxi_etl.py:126) finished in 0.617 s
+[2024-10-11T12:28:42.555+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO DAGScheduler: looking for newly runnable stages
+[2024-10-11T12:28:42.555+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO DAGScheduler: running: Set()
+[2024-10-11T12:28:42.555+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO DAGScheduler: waiting: Set()
+[2024-10-11T12:28:42.556+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO DAGScheduler: failed: Set()
+[2024-10-11T12:28:42.557+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO ShufflePartitionsUtil: For shuffle(4), advisory target size: 67108864, actual target size 1048576, minimum partition size: 1048576
+[2024-10-11T12:28:42.561+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO HashAggregateExec: spark.sql.codegen.aggregate.map.twolevel.enabled is set to true, but current version of codegened fast hashmap does not support this aggregate.
+[2024-10-11T12:28:42.576+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO CodeGenerator: Code generated in 13.003583 ms
+[2024-10-11T12:28:42.589+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO SparkContext: Starting job: toPandas at /spark-scripts/taxi_etl.py:126
+[2024-10-11T12:28:42.590+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO DAGScheduler: Got job 11 (toPandas at /spark-scripts/taxi_etl.py:126) with 1 output partitions
+[2024-10-11T12:28:42.590+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO DAGScheduler: Final stage: ResultStage 16 (toPandas at /spark-scripts/taxi_etl.py:126)
+[2024-10-11T12:28:42.590+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 15)
+[2024-10-11T12:28:42.590+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO DAGScheduler: Missing parents: List()
+[2024-10-11T12:28:42.590+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO DAGScheduler: Submitting ResultStage 16 (MapPartitionsRDD[43] at toPandas at /spark-scripts/taxi_etl.py:126), which has no missing parents
+[2024-10-11T12:28:42.597+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO MemoryStore: Block broadcast_17 stored as values in memory (estimated size 39.0 KiB, free 432.8 MiB)
+[2024-10-11T12:28:42.600+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO MemoryStore: Block broadcast_17_piece0 stored as bytes in memory (estimated size 18.1 KiB, free 432.7 MiB)
+[2024-10-11T12:28:42.600+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO BlockManagerInfo: Added broadcast_17_piece0 in memory on yellow-cab-airflow-scheduler:46441 (size: 18.1 KiB, free: 434.1 MiB)
+[2024-10-11T12:28:42.600+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO SparkContext: Created broadcast 17 from broadcast at DAGScheduler.scala:1513
+[2024-10-11T12:28:42.601+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 16 (MapPartitionsRDD[43] at toPandas at /spark-scripts/taxi_etl.py:126) (first 15 tasks are for partitions Vector(0))
+[2024-10-11T12:28:42.601+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO TaskSchedulerImpl: Adding task set 16.0 with 1 tasks resource profile 0
+[2024-10-11T12:28:42.602+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO TaskSetManager: Starting task 0.0 in stage 16.0 (TID 16) (172.24.0.3, executor 0, partition 0, NODE_LOCAL, 4457 bytes) taskResourceAssignments Map()
+[2024-10-11T12:28:42.610+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO BlockManagerInfo: Added broadcast_17_piece0 in memory on 172.24.0.3:33977 (size: 18.1 KiB, free: 434.1 MiB)
+[2024-10-11T12:28:42.615+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO MapOutputTrackerMasterEndpoint: Asked to send map output locations for shuffle 4 to 172.24.0.3:45652
+[2024-10-11T12:28:42.685+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO TaskSetManager: Finished task 0.0 in stage 16.0 (TID 16) in 84 ms on 172.24.0.3 (executor 0) (1/1)
+[2024-10-11T12:28:42.686+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO TaskSchedulerImpl: Removed TaskSet 16.0, whose tasks have all completed, from pool
+[2024-10-11T12:28:42.686+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO DAGScheduler: ResultStage 16 (toPandas at /spark-scripts/taxi_etl.py:126) finished in 0.090 s
+[2024-10-11T12:28:42.687+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO DAGScheduler: Job 11 is finished. Cancelling potential speculative or zombie tasks for this job
+[2024-10-11T12:28:42.687+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO TaskSchedulerImpl: Killing all running tasks in stage 16: Stage finished
+[2024-10-11T12:28:42.687+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:42 INFO DAGScheduler: Job 11 finished: toPandas at /spark-scripts/taxi_etl.py:126, took 0.097673 s
+[2024-10-11T12:28:55.086+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO FileSourceStrategy: Pushed Filters:
+[2024-10-11T12:28:55.089+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO FileSourceStrategy: Post-Scan Filters: atleastnnonnulls(4, tpep_pickup_datetime#32, tpep_dropoff_datetime#33, pickup_longitude#36, pickup_latitude#37)
+[2024-10-11T12:28:55.089+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO FileSourceStrategy: Output Data Schema: struct<tpep_pickup_datetime: timestamp, tpep_dropoff_datetime: timestamp, pickup_longitude: double, pickup_latitude: double ... 2 more fields>
+[2024-10-11T12:28:55.102+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO HashAggregateExec: spark.sql.codegen.aggregate.map.twolevel.enabled is set to true, but current version of codegened fast hashmap does not support this aggregate.
+[2024-10-11T12:28:55.130+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO CodeGenerator: Code generated in 20.1425 ms
+[2024-10-11T12:28:55.137+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO MemoryStore: Block broadcast_18 stored as values in memory (estimated size 204.2 KiB, free 432.5 MiB)
+[2024-10-11T12:28:55.161+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO BlockManagerInfo: Removed broadcast_11_piece0 on yellow-cab-airflow-scheduler:46441 in memory (size: 17.8 KiB, free: 434.1 MiB)
+[2024-10-11T12:28:55.166+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO MemoryStore: Block broadcast_18_piece0 stored as bytes in memory (estimated size 35.3 KiB, free 432.6 MiB)
+[2024-10-11T12:28:55.166+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO BlockManagerInfo: Added broadcast_18_piece0 in memory on yellow-cab-airflow-scheduler:46441 (size: 35.3 KiB, free: 434.1 MiB)
+[2024-10-11T12:28:55.167+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO SparkContext: Created broadcast 18 from toPandas at /spark-scripts/taxi_etl.py:129
+[2024-10-11T12:28:55.169+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+[2024-10-11T12:28:55.169+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO BlockManagerInfo: Removed broadcast_11_piece0 on 172.24.0.3:33977 in memory (size: 17.8 KiB, free: 434.1 MiB)
+[2024-10-11T12:28:55.174+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO DAGScheduler: Registering RDD 47 (toPandas at /spark-scripts/taxi_etl.py:129) as input to shuffle 5
+[2024-10-11T12:28:55.174+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO DAGScheduler: Got map stage job 12 (toPandas at /spark-scripts/taxi_etl.py:129) with 2 output partitions
+[2024-10-11T12:28:55.175+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO DAGScheduler: Final stage: ShuffleMapStage 17 (toPandas at /spark-scripts/taxi_etl.py:129)
+[2024-10-11T12:28:55.175+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO DAGScheduler: Parents of final stage: List()
+[2024-10-11T12:28:55.176+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO DAGScheduler: Missing parents: List()
+[2024-10-11T12:28:55.176+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO DAGScheduler: Submitting ShuffleMapStage 17 (MapPartitionsRDD[47] at toPandas at /spark-scripts/taxi_etl.py:129), which has no missing parents
+[2024-10-11T12:28:55.177+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO BlockManagerInfo: Removed broadcast_16_piece0 on yellow-cab-airflow-scheduler:46441 in memory (size: 16.6 KiB, free: 434.1 MiB)
+[2024-10-11T12:28:55.177+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO MemoryStore: Block broadcast_19 stored as values in memory (estimated size 27.1 KiB, free 432.6 MiB)
+[2024-10-11T12:28:55.179+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO MemoryStore: Block broadcast_19_piece0 stored as bytes in memory (estimated size 12.5 KiB, free 432.6 MiB)
+[2024-10-11T12:28:55.180+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO BlockManagerInfo: Removed broadcast_16_piece0 on 172.24.0.3:33977 in memory (size: 16.6 KiB, free: 434.1 MiB)
+[2024-10-11T12:28:55.180+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO BlockManagerInfo: Added broadcast_19_piece0 in memory on yellow-cab-airflow-scheduler:46441 (size: 12.5 KiB, free: 434.1 MiB)
+[2024-10-11T12:28:55.180+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO SparkContext: Created broadcast 19 from broadcast at DAGScheduler.scala:1513
+[2024-10-11T12:28:55.180+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO DAGScheduler: Submitting 2 missing tasks from ShuffleMapStage 17 (MapPartitionsRDD[47] at toPandas at /spark-scripts/taxi_etl.py:129) (first 15 tasks are for partitions Vector(0, 1))
+[2024-10-11T12:28:55.181+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO TaskSchedulerImpl: Adding task set 17.0 with 2 tasks resource profile 0
+[2024-10-11T12:28:55.182+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO TaskSetManager: Starting task 0.0 in stage 17.0 (TID 17) (172.24.0.3, executor 0, partition 0, PROCESS_LOCAL, 4904 bytes) taskResourceAssignments Map()
+[2024-10-11T12:28:55.183+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO TaskSetManager: Starting task 1.0 in stage 17.0 (TID 18) (172.24.0.3, executor 0, partition 1, PROCESS_LOCAL, 4904 bytes) taskResourceAssignments Map()
+[2024-10-11T12:28:55.186+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO BlockManagerInfo: Removed broadcast_13_piece0 on yellow-cab-airflow-scheduler:46441 in memory (size: 12.7 KiB, free: 434.1 MiB)
+[2024-10-11T12:28:55.191+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO BlockManagerInfo: Removed broadcast_13_piece0 on 172.24.0.3:33977 in memory (size: 12.7 KiB, free: 434.2 MiB)
+[2024-10-11T12:28:55.195+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO BlockManagerInfo: Removed broadcast_14_piece0 on yellow-cab-airflow-scheduler:46441 in memory (size: 17.7 KiB, free: 434.1 MiB)
+[2024-10-11T12:28:55.198+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO BlockManagerInfo: Removed broadcast_14_piece0 on 172.24.0.3:33977 in memory (size: 17.7 KiB, free: 434.2 MiB)
+[2024-10-11T12:28:55.199+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO BlockManagerInfo: Added broadcast_19_piece0 in memory on 172.24.0.3:33977 (size: 12.5 KiB, free: 434.2 MiB)
+[2024-10-11T12:28:55.202+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO BlockManagerInfo: Removed broadcast_17_piece0 on yellow-cab-airflow-scheduler:46441 in memory (size: 18.1 KiB, free: 434.1 MiB)
+[2024-10-11T12:28:55.204+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO BlockManagerInfo: Removed broadcast_17_piece0 on 172.24.0.3:33977 in memory (size: 18.1 KiB, free: 434.2 MiB)
+[2024-10-11T12:28:55.253+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO BlockManagerInfo: Added broadcast_18_piece0 in memory on 172.24.0.3:33977 (size: 35.3 KiB, free: 434.1 MiB)
+[2024-10-11T12:28:55.725+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO TaskSetManager: Finished task 0.0 in stage 17.0 (TID 17) in 543 ms on 172.24.0.3 (executor 0) (1/2)
+[2024-10-11T12:28:55.726+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO TaskSetManager: Finished task 1.0 in stage 17.0 (TID 18) in 543 ms on 172.24.0.3 (executor 0) (2/2)
+[2024-10-11T12:28:55.726+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO TaskSchedulerImpl: Removed TaskSet 17.0, whose tasks have all completed, from pool
+[2024-10-11T12:28:55.727+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO DAGScheduler: ShuffleMapStage 17 (toPandas at /spark-scripts/taxi_etl.py:129) finished in 0.551 s
+[2024-10-11T12:28:55.728+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO DAGScheduler: looking for newly runnable stages
+[2024-10-11T12:28:55.728+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO DAGScheduler: running: Set()
+[2024-10-11T12:28:55.728+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO DAGScheduler: waiting: Set()
+[2024-10-11T12:28:55.728+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO DAGScheduler: failed: Set()
+[2024-10-11T12:28:55.730+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO ShufflePartitionsUtil: For shuffle(5), advisory target size: 67108864, actual target size 1048576, minimum partition size: 1048576
+[2024-10-11T12:28:55.735+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO HashAggregateExec: spark.sql.codegen.aggregate.map.twolevel.enabled is set to true, but current version of codegened fast hashmap does not support this aggregate.
+[2024-10-11T12:28:55.763+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO CodeGenerator: Code generated in 17.853833 ms
+[2024-10-11T12:28:55.786+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO SparkContext: Starting job: toPandas at /spark-scripts/taxi_etl.py:129
+[2024-10-11T12:28:55.787+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO DAGScheduler: Got job 13 (toPandas at /spark-scripts/taxi_etl.py:129) with 1 output partitions
+[2024-10-11T12:28:55.787+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO DAGScheduler: Final stage: ResultStage 19 (toPandas at /spark-scripts/taxi_etl.py:129)
+[2024-10-11T12:28:55.787+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 18)
+[2024-10-11T12:28:55.788+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO DAGScheduler: Missing parents: List()
+[2024-10-11T12:28:55.788+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO DAGScheduler: Submitting ResultStage 19 (MapPartitionsRDD[50] at toPandas at /spark-scripts/taxi_etl.py:129), which has no missing parents
+[2024-10-11T12:28:55.794+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO MemoryStore: Block broadcast_20 stored as values in memory (estimated size 46.2 KiB, free 432.7 MiB)
+[2024-10-11T12:28:55.796+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO MemoryStore: Block broadcast_20_piece0 stored as bytes in memory (estimated size 20.3 KiB, free 432.7 MiB)
+[2024-10-11T12:28:55.796+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO BlockManagerInfo: Added broadcast_20_piece0 in memory on yellow-cab-airflow-scheduler:46441 (size: 20.3 KiB, free: 434.1 MiB)
+[2024-10-11T12:28:55.797+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO SparkContext: Created broadcast 20 from broadcast at DAGScheduler.scala:1513
+[2024-10-11T12:28:55.797+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 19 (MapPartitionsRDD[50] at toPandas at /spark-scripts/taxi_etl.py:129) (first 15 tasks are for partitions Vector(0))
+[2024-10-11T12:28:55.797+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO TaskSchedulerImpl: Adding task set 19.0 with 1 tasks resource profile 0
+[2024-10-11T12:28:55.798+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO TaskSetManager: Starting task 0.0 in stage 19.0 (TID 19) (172.24.0.3, executor 0, partition 0, NODE_LOCAL, 4457 bytes) taskResourceAssignments Map()
+[2024-10-11T12:28:55.807+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO BlockManagerInfo: Added broadcast_20_piece0 in memory on 172.24.0.3:33977 (size: 20.3 KiB, free: 434.1 MiB)
+[2024-10-11T12:28:55.838+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO MapOutputTrackerMasterEndpoint: Asked to send map output locations for shuffle 5 to 172.24.0.3:45652
+[2024-10-11T12:28:55.908+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO TaskSetManager: Finished task 0.0 in stage 19.0 (TID 19) in 110 ms on 172.24.0.3 (executor 0) (1/1)
+[2024-10-11T12:28:55.909+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO TaskSchedulerImpl: Removed TaskSet 19.0, whose tasks have all completed, from pool
+[2024-10-11T12:28:55.909+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO DAGScheduler: ResultStage 19 (toPandas at /spark-scripts/taxi_etl.py:129) finished in 0.118 s
+[2024-10-11T12:28:55.909+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO DAGScheduler: Job 13 is finished. Cancelling potential speculative or zombie tasks for this job
+[2024-10-11T12:28:55.909+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO TaskSchedulerImpl: Killing all running tasks in stage 19: Stage finished
+[2024-10-11T12:28:55.910+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:55 INFO DAGScheduler: Job 13 finished: toPandas at /spark-scripts/taxi_etl.py:129, took 0.122833 s
+[2024-10-11T12:28:56.113+0000] {spark_submit.py:649} INFO - /home/airflow/.local/lib/python3.9/site-packages/pyspark/python/lib/pyspark.zip/pyspark/sql/pandas/conversion.py:298: FutureWarning: In the future `np.bool` will be defined as the corresponding NumPy scalar.
+[2024-10-11T12:28:56.113+0000] {spark_submit.py:649} INFO - return np.bool  # type: ignore[attr-defined]
+[2024-10-11T12:28:56.113+0000] {spark_submit.py:649} INFO - Traceback (most recent call last):
+[2024-10-11T12:28:56.114+0000] {spark_submit.py:649} INFO - File "/spark-scripts/taxi_etl.py", line 138, in <module>
+[2024-10-11T12:28:56.114+0000] {spark_submit.py:649} INFO - main()
+[2024-10-11T12:28:56.114+0000] {spark_submit.py:649} INFO - File "/spark-scripts/taxi_etl.py", line 129, in main
+[2024-10-11T12:28:56.115+0000] {spark_submit.py:649} INFO - dim_datetime_write = client.load_table_from_dataframe(dim_datetime.toPandas(), f"{PROJECT_ID}.{DATASET_ID}.dim_datetime", job_config=job_config)
+[2024-10-11T12:28:56.115+0000] {spark_submit.py:649} INFO - File "/home/airflow/.local/lib/python3.9/site-packages/pyspark/python/lib/pyspark.zip/pyspark/sql/pandas/conversion.py", line 216, in toPandas
+[2024-10-11T12:28:56.115+0000] {spark_submit.py:649} INFO - File "/home/airflow/.local/lib/python3.9/site-packages/pyspark/python/lib/pyspark.zip/pyspark/sql/pandas/conversion.py", line 298, in _to_corrected_pandas_type
+[2024-10-11T12:28:56.115+0000] {spark_submit.py:649} INFO - File "/home/airflow/.local/lib/python3.9/site-packages/numpy/__init__.py", line 324, in __getattr__
+[2024-10-11T12:28:56.116+0000] {spark_submit.py:649} INFO - raise AttributeError(__former_attrs__[attr])
+[2024-10-11T12:28:56.116+0000] {spark_submit.py:649} INFO - AttributeError: module 'numpy' has no attribute 'bool'.
+[2024-10-11T12:28:56.116+0000] {spark_submit.py:649} INFO - `np.bool` was a deprecated alias for the builtin `bool`. To avoid this error in existing code, use `bool` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.bool_` here.
+[2024-10-11T12:28:56.118+0000] {spark_submit.py:649} INFO - The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:
+[2024-10-11T12:28:56.119+0000] {spark_submit.py:649} INFO - https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+[2024-10-11T12:28:56.355+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:56 INFO SparkContext: Invoking stop() from shutdown hook
+[2024-10-11T12:28:56.365+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:56 INFO SparkUI: Stopped Spark web UI at http://yellow-cab-airflow-scheduler:4040
+[2024-10-11T12:28:56.367+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:56 INFO StandaloneSchedulerBackend: Shutting down all executors
+[2024-10-11T12:28:56.367+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:56 INFO CoarseGrainedSchedulerBackend$DriverEndpoint: Asking each executor to shut down
+[2024-10-11T12:28:56.386+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:56 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+[2024-10-11T12:28:56.428+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:56 INFO MemoryStore: MemoryStore cleared
+[2024-10-11T12:28:56.429+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:56 INFO BlockManager: BlockManager stopped
+[2024-10-11T12:28:56.432+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:56 INFO BlockManagerMaster: BlockManagerMaster stopped
+[2024-10-11T12:28:56.435+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:56 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+[2024-10-11T12:28:56.468+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:56 INFO SparkContext: Successfully stopped SparkContext
+[2024-10-11T12:28:56.468+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:56 INFO ShutdownHookManager: Shutdown hook called
+[2024-10-11T12:28:56.469+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:56 INFO ShutdownHookManager: Deleting directory /tmp/spark-266d7b7b-89c3-4157-8598-a594acb6c362
+[2024-10-11T12:28:56.479+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:56 INFO ShutdownHookManager: Deleting directory /tmp/spark-266d7b7b-89c3-4157-8598-a594acb6c362/pyspark-9f8912c7-aff5-4ec7-9473-bce00617d0e9
+[2024-10-11T12:28:56.486+0000] {spark_submit.py:649} INFO - 24/10/11 12:28:56 INFO ShutdownHookManager: Deleting directory /tmp/spark-3e1c2106-4c3c-4318-826e-eebc5f4f435b
+[2024-10-11T12:28:56.552+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-10-11T12:28:56.581+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/providers/apache/spark/operators/spark_submit.py", line 176, in execute
+    self._hook.submit(self.application)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/providers/apache/spark/hooks/spark_submit.py", line 575, in submit
+    raise AirflowException(
+airflow.exceptions.AirflowException: Cannot execute: spark-submit --master spark://spark-master:7077 --conf spark.jars.packages=org.apache.sedona:sedona-python-adapter-3.0_2.12:1.2.0-incubating,org.datasyslab:geotools-wrapper:geotools-24.0 --conf spark.jars.repositories=https://repo1.maven.org/maven2/ --name arrow-spark --deploy-mode client /spark-scripts/taxi_etl.py. Error code is: 1.
+[2024-10-11T12:28:56.586+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=etl_yellow_cab, task_id=etl_task, run_id=manual__2024-10-11T07:14:16.194830+00:00, execution_date=20241011T071416, start_date=20241011T122750, end_date=20241011T122856
+[2024-10-11T12:28:56.602+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 34 for task etl_task (Cannot execute: spark-submit --master spark://spark-master:7077 --conf spark.jars.packages=org.apache.sedona:sedona-python-adapter-3.0_2.12:1.2.0-incubating,org.datasyslab:geotools-wrapper:geotools-24.0 --conf spark.jars.repositories=https://repo1.maven.org/maven2/ --name arrow-spark --deploy-mode client /spark-scripts/taxi_etl.py. Error code is: 1.; 1156)
+[2024-10-11T12:28:56.642+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-10-11T12:28:56.666+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-10-11T12:28:56.667+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

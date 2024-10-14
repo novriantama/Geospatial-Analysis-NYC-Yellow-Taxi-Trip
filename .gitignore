@@ -1,6 +1,4 @@
 .env
-logs/*
-!logs/.gitkeep
 dags/*
 !dags/*.py
 data/*

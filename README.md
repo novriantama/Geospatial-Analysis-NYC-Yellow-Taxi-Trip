@@ -26,3 +26,9 @@ By addressing these questions, taxi services can make data-driven decisions rega
 - **BigQuery**: For data storage and querying
 - **Looker**: For data visualization
 
+## How to install
+1. Clone this repo.
+2. Run `make download-data`
+3. Unzip nyc yellow cab data and place it to data folder
+4. Run `make docker-build`
+5. Run `make docker-compose`

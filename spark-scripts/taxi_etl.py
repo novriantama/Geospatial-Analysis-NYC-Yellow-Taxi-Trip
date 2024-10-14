@@ -102,13 +102,7 @@ def main():
         expr(f"ST_Point(dropoff_longitude, dropoff_latitude)")
     ).withColumn(
         "Trip_Distance_Calculated",
-        expr(f"ST_Distance(Pickup_Point, Dropoff_Point)")
-    ).withColumn(
-        "Pickup_Point_EWKT", 
-        expr(f"ST_AsText(Pickup_Point)").cast(StringType())  
-    ).withColumn(
-        "Dropoff_Point_EWKT", 
-        expr(f"ST_AsText(Dropoff_Point)").cast(StringType())  
+        expr(f"ST_Distance(Pickup_Point, Dropoff_Point)")  
     ).select(
         "VendorID",
         "payment_type",
@@ -129,16 +123,10 @@ def main():
         "total_amount",
         "Trip_Duration",
         "store_and_fwd_flag",
-        "Pickup_Point_EWKT",
-        "Dropoff_Point_EWKT",
         "Trip_Distance_Calculated"
     )
 
-    fact_trip.drop("Dropoff_Point", "Pickup_Point")
-
-    fact_trip.show(10)
-
-    # --- Save the data (example: to Parquet files) ---
+    # --- Save the data ---
     dim_vendor_write = client.load_table_from_dataframe(dim_vendor.toPandas(), f"{PROJECT_ID}.{DATASET_ID}.dim_vendor", job_config=job_config)
     dim_vendor_write.result()
 

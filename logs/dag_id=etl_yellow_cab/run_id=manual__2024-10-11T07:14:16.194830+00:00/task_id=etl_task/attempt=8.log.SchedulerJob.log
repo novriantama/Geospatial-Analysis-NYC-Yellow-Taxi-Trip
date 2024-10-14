@@ -1,0 +1,2 @@
+[2024-10-11T08:13:14.213+0000] {scheduler_job_runner.py:769} ERROR - Executor reports task instance <TaskInstance: etl_yellow_cab.etl_task manual__2024-10-11T07:14:16.194830+00:00 [queued]> finished (failed) although the task says it's queued. (Info: None) Was the task killed externally?
+[2024-10-11T08:14:30.866+0000] {scheduler_job_runner.py:769} ERROR - Executor reports task instance <TaskInstance: etl_yellow_cab.etl_task manual__2024-10-11T07:14:16.194830+00:00 [queued]> finished (failed) although the task says it's queued. (Info: None) Was the task killed externally?

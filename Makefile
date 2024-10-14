@@ -1,5 +1,10 @@
 include .env
 
+download-data:
+	@pip install kaggle
+	@echo 'Downloading data...'
+	@kaggle datasets download -d elemento/nyc-yellow-taxi-trip-data
+
 docker-build:
 	@docker network inspect yellow-cab-network >/dev/null 2>&1 || docker network create yellow-cab-network
 	@echo '__________________________________________________________'
